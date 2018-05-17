@@ -1,10 +1,8 @@
-const HtmlConfig = require('./html.config');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackDashboard = require('webpack-dashboard/plugin');
-const serve = require('webpack-serve');
-
-const path = require('path');
+const HtmlConfig = require(path.join(__dirname, 'html.config'));
 
 const plugins = [new HtmlWebpackPlugin(HtmlConfig), new MiniCssExtractPlugin()];
 

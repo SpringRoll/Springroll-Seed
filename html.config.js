@@ -10,7 +10,6 @@ module.exports = {
 
   /* {string} webpack require path to the template.
        Please see the docs for details */
-  // template: undefined || path.join(__dirname, 'templates', 'Springroll.html'),
   template: path.join(__dirname, 'templates', 'Springroll.html'),
 
   /* {boolean | Object | Function}
