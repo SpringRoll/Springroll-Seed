@@ -15,7 +15,8 @@ module.exports = {
   stats: 'errors-only',
   entry: {
     main: path.join(__dirname, 'src', 'index.js'),
-    vendor: path.join(__dirname, 'src', 'vendor.js')
+    vendor: path.join(__dirname, 'src', 'vendor.js'),
+    styles: path.join(__dirname, 'src', 'styles.css')
   },
   plugins,
   module: {
