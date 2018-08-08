@@ -1,6 +1,6 @@
 # Springroll Seed
 
-Springroll Seed is intended to be used as starting point for games projects. It comes bundled with Webpack, Babel, as well as a few other node modules to streamline development.
+SpringRoll Seed is intended to be used as a starting point for games projects. It comes bundled with Webpack, Babel, as well as a few other node modules to streamline development.
 
 ## Setup
 
@@ -32,7 +32,7 @@ Builds the app without mangling or minifying it for easier debugging
 
 ## Webpack
 
-Springroll Seed uses Webpack as its build process. If you are not familiar with Webpack, how it works is that it looks for a entry point, in Seed's case there are three options. `index.js`, `vendor.js`, and `styles.css`.
+SpringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, how it works is that it looks for a entry point, in Seed's case there are three options. `index.js`, `vendor.js`, and `styles.css`.
 
 All three entry points work the same way in that they will include and bundle any code or styles that are included inside them recursively and bundle them together into into one file for each entry point and will do it's best to minify the code along the way.
 
