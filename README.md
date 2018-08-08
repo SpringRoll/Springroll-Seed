@@ -2,17 +2,31 @@
 
 Springroll Seed is intended to be used as starting point for games projects. It comes bundled with Webpack, Babel, as well as a few other node modules to streamline development.
 
+## Setup
+
+```
+$ git clone https://github.com/SpringRoll/Springroll-Seed.git my_project
+
+$ cd my_project
+
+$ npm install
+```
+
 ## Commands
 
-SpringRoll Seed comes with only two commands
+SpringRoll Seed comes with three commands
 
 ### npm start
 
 Starts the dev server
 
-### npm run build
+### npm run build:release
 
-Builds ap for production
+Builds app for release
+
+### npm run build:debug
+
+Builds the app without mangling or minifying it for easier debugging
 
 # Dev Flow
 
@@ -30,6 +44,12 @@ This project also comes pre-configured to load in media files. To include them y
 [Click here to read more about file loader.](https://github.com/webpack-contrib/file-loader)
 
 By default supported media types are: png | jpg | gif | mp3 | ogg | mp4
+
+### Dev server
+
+SpringRoll-Seed comes packaged with its own dev server that will auto reload whenever a change has been made to the code base.
+
+To use start using it, just run `npm start` and it will be available at `127.0.0.1:8080`/`localhost:8080`
 
 ## Templates
 
