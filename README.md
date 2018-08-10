@@ -32,22 +32,24 @@ Builds the app without mangling or minifying it for easier debugging
 
 ## Webpack
 
-SpringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, how it works is that it looks for a entry point, in Seed's case there are three options. `index.js`, `vendor.js`, and `styles.css`.
+pringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, here's how it works:
 
-All three entry points work the same way in that they will include and bundle any code or styles that are included inside them recursively and bundle them together into into one file for each entry point and will do it's best to minify the code along the way.
+Webpack looks for an entry point, which in Seed's case there are three options: `index.js`, `vendor.js`, and `styles.css`.
 
-As a convention it's recommended to import all your vendor dependencies in to `vendor.js` while all your own code is stored in `index.js` This will help with caching as your vendor files are less likely to change.
+All three entry points work the same way. Each entry point includes and bundles any code or styles included inside itself recursively and bundle them together into one file. From there, it will attempt to minify the code along the way.
+
+We recommend importing all your vendor dependencies into `vendor.js`, keeping all of your unique code in `index.js`. This helps with caching as your vendor files tend to change infrequently.
 
 ### Media Files
 
-This project also comes pre-configured to load in media files. To include them you just have to import them in to your project like you would Javascript and Webpack will take of adding them to the deployment version of the app. All Media files bundled this will be placed in a assets version directory.
+This project also comes pre-configured to load in media files, which you can achieve by importing them into your project similarly to Javascript. Webpack will handle adding them to the deployment version of the app in an assets version directory.
 [Click here to read more about file loader.](https://github.com/webpack-contrib/file-loader)
 
-By default supported media types are: png | jpg | gif | mp3 | ogg | mp4
+By default, supported media types are: png | jpg | gif | mp3 | ogg | mp4
 
 ### Dev server
 
-SpringRoll-Seed comes packaged with its own dev server that will auto reload whenever a change has been made to the code base.
+SpringRoll-Seed comes packaged with its own dev server that auto-reloads whenever a developer makes changes to the code base.
 
 To use start using it, just run `npm start` and it will be available at `127.0.0.1:8080`/`localhost:8080`
 
