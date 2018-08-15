@@ -1,6 +1,6 @@
 # Springroll Seed
 
-SpringRoll Seed is intended to be used as a starting point for games projects. It comes bundled with Webpack, Babel, as well as a few other node modules to streamline development.
+Developers should use SpringRoll Seed as a starting point for games projects. It comes bundled with Webpack, Babel, and a few node modules to streamline development.
 
 ## Setup
 
@@ -14,7 +14,7 @@ $ npm install
 
 ## Commands
 
-SpringRoll Seed comes with three commands
+SpringRoll Seed comes with three commands:
 
 ### npm start
 
@@ -32,13 +32,13 @@ Builds the app without mangling or minifying it for easier debugging
 
 ## Webpack
 
-pringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, here's how it works:
+SpringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, here's how it works:
 
 Webpack looks for an entry point, which in Seed's case there are three options: `index.js`, `vendor.js`, and `styles.css`.
 
-All three entry points work the same way. Each entry point includes and bundles any code or styles included inside itself recursively and bundle them together into one file. From there, it will attempt to minify the code along the way.
+All three entry points work the same way. Each entry point includes and bundles any code or styles included inside itself recursively and bundles them together into one file. From there, it will attempt to minify the code along the way.
 
-We recommend importing all your vendor dependencies into `vendor.js`, keeping all of your unique code in `index.js`. This helps with caching as your vendor files tend to change infrequently.
+We recommend importing all of your vendor dependencies into `vendor.js`, keeping all of your unique code in `index.js`. This helps with caching as your vendor files tend to change infrequently.
 
 ### Media Files
 
