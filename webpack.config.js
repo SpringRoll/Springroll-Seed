@@ -1,14 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpackDashboard = require('webpack-dashboard/plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
 
 const plugins = [new HtmlWebpackPlugin(HtmlConfig), new MiniCssExtractPlugin()];
-
-if (process.env.WEBPACK_SERVE) {
-  plugins.push(new webpackDashboard());
-}
 
 module.exports = {
   mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
@@ -17,6 +12,9 @@ module.exports = {
     main: path.join(__dirname, 'src', 'index.js'),
     vendor: path.join(__dirname, 'src', 'vendor.js'),
     styles: path.join(__dirname, 'src', 'styles.css')
+  },
+  output: {
+    path: __dirname + '/deploy'
   },
   plugins,
   module: {
