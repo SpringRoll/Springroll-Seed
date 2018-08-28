@@ -53,6 +53,12 @@ These files will not be modified by Webpack's build process.
 
 During development you can access these files just as you would during production. You do not need to include the `static` directory as part of the file path.
 
+```html
+<link rel="icon" href="favicon.ico"/> <!-- Correct -->
+<link rel="icon" href="../static/favicon.ico"/> <!-- Incorrect -->
+<link rel="icon" href="/static/favicon.ico"/> <!-- Incorrect -->
+```
+
 ### Dev server
 
 SpringRoll-Seed comes packaged with its own dev server that auto-reloads whenever a developer makes changes to the code base.
