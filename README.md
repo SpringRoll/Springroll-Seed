@@ -34,11 +34,9 @@ Builds the app without mangling or minifying it for easier debugging
 
 SpringRoll Seed uses Webpack as its build process. If you are not familiar with Webpack, here's how it works:
 
-Webpack looks for an entry point, which in Seed's case there are three options: `index.js`, `vendor.js`, and `styles.css`.
+Webpack looks for an entry point, which in Seed's case is `index.js`.
 
-All three entry points work the same way. Each entry point includes and bundles any code or styles included inside itself recursively and bundles them together into one file. From there, Webpack will attempt to minify the code along the way.
-
-We recommend importing all of your vendor dependencies into `vendor.js`, while keeping all of your unique code in `index.js`. This helps with caching as your vendor files tend to change infrequently.
+An entry point includes and bundles any code or styles included inside itself recursively and bundles them together into one file. From there, Webpack will attempt to minify the code along the way as well as split it into multiple files when needed.
 
 ### Media Files
 
@@ -46,6 +44,14 @@ This project also comes pre-configured to load in media files, which you can ach
 [Click here to read more about file loader.](https://github.com/webpack-contrib/file-loader)
 
 By default, supported media types are: png | jpg | gif | mp3 | ogg | mp4
+
+### Static Files
+
+In the case where you wish to include static files in your project, SpringRoll Seed has the option to automatically add them to your build. Place any static files in the `static` directory and they will be included to the root of your release directory with the same structure as in the `static` directory.
+
+These files will not be modified by Webpack's build process.
+
+During development you can access these files just as you would during production. You do not need to include the `static` directory as part of the file path.
 
 ### Dev server
 
