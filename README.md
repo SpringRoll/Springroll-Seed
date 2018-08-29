@@ -5,12 +5,15 @@ Developers should use SpringRoll Seed as a starting point for games projects. It
 ## Setup
 
 ```
-$ git clone https://github.com/SpringRoll/Springroll-Seed.git my_project
+$ git clone -o template https://github.com/SpringRoll/Springroll-Seed.git my_project
 
 $ cd my_project
 
 $ npm install
 ```
+From here you can add your own remote origin by typing `git remote add origin URL.git`.
+
+__Note__ To receive Springroll-Seed updates, use 'git pull template'.
 
 ## Commands
 
