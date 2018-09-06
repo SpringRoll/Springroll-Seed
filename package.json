@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env.devMode",
-    "build:release": "webpack",
+    "build:release": "webpack --env.prodMode",
     "build:debug": "webpack --env.devMode"
   },
   "author": "Andrew Smith",
