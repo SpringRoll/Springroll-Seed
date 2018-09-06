@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --env.devMode",
-    "build:release": "webpack --env.prodMode",
-    "build:debug": "webpack --env.devMode"
+    "start": "webpack-dev-server --env.dev",
+    "build:release": "webpack --env.prod",
+    "build:debug": "webpack --env.dev"
   },
   "author": "Andrew Smith",
   "license": "ISC",
