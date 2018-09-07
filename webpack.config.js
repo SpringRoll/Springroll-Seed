@@ -4,70 +4,84 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
 
-const deploy = `/${'deploy'}`;
+const deploy = path.join(__dirname, 'deploy');
 
+module.exports = env => {
+  const plugins = [
+    new HtmlWebpackPlugin(HtmlConfig),
+    new MiniCssExtractPlugin(),
+    new CopyPlugin([{ from: path.join(__dirname + '/static'), to: deploy }])
+  ];
+  return {
+    stats: 'errors-only',
 
-const plugins = [new HtmlWebpackPlugin(HtmlConfig), new MiniCssExtractPlugin(), new CopyPlugin([
-  { from: __dirname + '/static', to: __dirname + deploy + '' }
-])];
+    mode: env.dev ? 'development' : 'production',
 
+    devServer: {
+      contentBase: path.join(__dirname, '/static')
+    },
 
-module.exports = {
-  mode: process.env.WEBPACK_SERVE ? 'development' : 'production',
-  stats: 'errors-only',
-  output: {
-    path: __dirname + deploy
-  },
-  plugins,
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      },
-      {
-        test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: deploy + '/assets/image/'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(mp3|ogg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: deploy + '/assets/audio/'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(mp4)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: deploy + '/assets/video/'
-            }
-          }
-        ]
+    entry: ['@babel/polyfill', path.join(__dirname, '/src/index.js')],
+    output: {
+      path: deploy
+    },
+
+    optimization: {
+      splitChunks: {
+        chunks: 'all'
       }
-    ]
-  }
+    },
+    plugins,
+    module: {
+      rules: [
+        {
+          test: /\.css$/,
+          use: [MiniCssExtractPlugin.loader, 'css-loader']
+        },
+        {
+          test: /\.js$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          }
+        },
+        {
+          test: /\.(png|jpg|gif)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: path.join(deploy + 'assets/image')
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(mp3|ogg)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: path.join(deploy + '/assets/audio/')
+              }
+            }
+          ]
+        },
+        {
+          test: /\.(mp4)$/,
+          use: [
+            {
+              loader: 'file-loader',
+              options: {
+                outputPath: path.join(deploy + '/assets/video/')
+              }
+            }
+          ]
+        }
+      ]
+    }
+  };
 };
