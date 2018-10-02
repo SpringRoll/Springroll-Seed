@@ -55,10 +55,7 @@ export class Game
 
         const loadComplete = new Promise((resolve, reject) =>
         {
-            PIXI.loader.load(() =>
-            {
-                resolve();
-            });
+            PIXI.loader.load(resolve);
         });
         return loadComplete;
     }
