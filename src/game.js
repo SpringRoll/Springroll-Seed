@@ -1,5 +1,7 @@
 import * as Springroll from 'springroll';
-import { Ball } from './gameobjects/ball';
+
+import { TitleScene } from './scenes/title.js';
+import { GameScene } from './scenes/game.js';
 
 export class Game
 {
@@ -35,48 +37,40 @@ export class Game
             // in a full game this should be handled gracefully.
             PIXI.loader.resources['bounce'].sound.volume = value;
         }); 
-    }
 
-    run()
-    {
-        this.preload().then(() =>
-        {
-            console.log("preload complete");
-            this.start();
-            this.pixi.ticker.add(this.update.bind(this));
+        // add a extra state property for storying the current scene. Whenever the scene is changed, this class
+        // will swap out the container attached to the stage
+        this.app.state.addField('scene', null);
+        this.app.state.scene.subscribe(this.onChangeScene.bind(this));
+
+        // wait for the app to be ready, then set the new scene
+        this.app.state.ready.subscribe(() => {
+          this.app.state.scene.value = new TitleScene(this);
         });
     }
 
-    preload()
-    {
-        // Load assets
-        PIXI.loader.add('ball', './assets/ball.png');
-        PIXI.loader.add('bounce', './assets/bounce.{ogg, mp3}');
-
-        const loadComplete = new Promise((resolve, reject) =>
-        {
-            PIXI.loader.load(resolve);
-        });
-        return loadComplete;
+    run() {
+      // to start the game up, register the update loop
+      this.pixi.ticker.add(this.update.bind(this));
     }
 
-    start()
-    {
-        this.ball = new Ball({ x: (this.width / 4) * 3 , y: this.height / 2});
-        this.pixi.stage.addChild(this.ball);
+    onChangeScene(newScene, oldScene) {
+      // when a new scene is set, add it's container, then start it up
+      this.pixi.stage.addChild(newScene);
+      newScene.start();
 
-        this.ball2 = new Ball({ x: this.width / 4 });
-        this.pixi.stage.addChild(this.ball2);
+      // oh, and don't forget to remove the old scene
+      this.pixi.stage.removeChild(oldScene);
     }
 
     update(deltaTime)
     {
-        if (this.isPaused)
+        // if the game is paused, or there isn't a scene, we can skip rendering/updates  
+        if (this.isPaused || this.app.state.scene.value === null)
         {
             return;
         }
 
-        this.ball.update(deltaTime);
-        this.ball2.update(deltaTime);
+        this.app.state.scene.value.update(deltaTime);
     }
 }
