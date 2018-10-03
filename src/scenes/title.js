@@ -1,4 +1,4 @@
-import { GameScene } from './game.js';
+import { GameScene } from './gameScene';
 
 export class TitleScene extends PIXI.Container {
   constructor(game) {

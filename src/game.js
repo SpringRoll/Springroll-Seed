@@ -1,7 +1,6 @@
 import * as Springroll from 'springroll';
 
-import { TitleScene } from './scenes/title.js';
-import { GameScene } from './scenes/game.js';
+import { TitleScene } from './scenes/title';
 
 export class Game
 {

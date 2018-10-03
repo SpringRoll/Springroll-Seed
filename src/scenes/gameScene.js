@@ -20,10 +20,10 @@ export class GameScene extends PIXI.Container {
 
   start() {
     // add some items to this scene
-    this.ball = new Ball({ x: (this.width / 4) * 3 , y: this.height / 2});
+    this.ball = new Ball({ x: (this.game.width / 4) * 3 , y: this.game.height / 2});
     this.addChild(this.ball);
 
-    this.ball2 = new Ball({ x: this.width / 4 });
+    this.ball2 = new Ball({ x: this.game.width / 4 });
     this.addChild(this.ball2);
   }
 
