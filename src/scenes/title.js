@@ -13,7 +13,7 @@ export class TitleScene extends Scene
         // a clickable label to cause a scene change
         let text = new createjs.Text("Click me!", "20px Arial", "#ffffff");
 
-        //text.addEventListener("click", () =>
+        text.addEventListener("click", () =>
         {
             // when the label is clicked, preload the game scene and then tell the app to switch scenes
             const nextScene = new GameScene(this.game);
@@ -21,7 +21,7 @@ export class TitleScene extends Scene
             {
                 this.game.app.state.scene.value = nextScene;
             });
-        }; //);
+        });
 
         this.addChild(text);
     }
