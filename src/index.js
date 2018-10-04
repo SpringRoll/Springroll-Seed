@@ -1,9 +1,6 @@
 import './styles.css';
-import 'springroll';
-import { create } from 'domain';
+import { Game } from './game';
+import { GAMEPLAY } from './constants';
 
-let stage = new createjs.Stage('stage');
-var shape = new createjs.Shape();
-shape.graphics.beginFill('red').drawRect(0, 0, 120, 120);
-stage.addChild(shape);
-stage.update();
+const template = new Game(GAMEPLAY.WIDTH, GAMEPLAY.HEIGHT);
+template.run();
