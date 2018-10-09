@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import { Application } from 'springroll';
-import { GAMEPLAY } from '../constants';
+import { GAMEPLAY, SCENE } from '../constants';
 
 // the easiest way to treat an Application as if it were a phaser plugin
 // is to extend Application than implement the plugin functions:
@@ -41,19 +41,21 @@ export class ApplicationPlugin extends Application
         });
 
         // handle necessary springroll states.
-        this.state.pause.subscribe(() =>
+        this.state.pause.subscribe((current) =>
         {
-
+            if(current)
+            {
+                this.game.scene.pause(SCENE.GAME);
+            }
+            else
+            {
+                this.game.scene.resume(SCENE.GAME);
+            }
         });
 
         this.state.soundVolume.subscribe((current) =>
         {
             this.game.sound.volume = current;
-        });
-
-        this.state.sfxVolume.subscribe(() =>
-        {
-            
         });
     }
 
