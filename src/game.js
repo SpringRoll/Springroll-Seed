@@ -2,6 +2,7 @@ import * as Springroll from 'springroll';
 
 import { TitleScene } from './scenes/title';
 import { GameScene } from './scenes/gameScene';
+import { Property } from 'springroll';
 
 export class Game
 {
@@ -39,7 +40,7 @@ export class Game
 
         // add an extra state property for storying the current scene. Whenever the scene is changed, this class
         // will swap out the container attached to the stage
-        this.app.state.addField('scene', null);
+        this.app.state.scene = new Property(null);
         this.app.state.scene.subscribe(this.onChangeScene.bind(this));
 
         // wait for the app to be ready, then set the new scene
