@@ -41,18 +41,12 @@ export class ResizePlugin extends Phaser.Plugins.BasePlugin
 			' transform-origin: top left;'
         );
         
-		
 		const width = w / scale;
         const height = h / scale;
-        
-
         game.resize(width, height);
         
-
 		game.scene.scenes.forEach(function (scene) {
             scene.cameras.resize(width, height);
         });
-        
-
     }
 }
