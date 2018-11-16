@@ -1,10 +1,10 @@
 import './styles.css';
 
-import { ApplicationPlugin, FactoryPlugin } from './plugins';
+import { ApplicationPlugin, FactoryPlugin, ResizePlugin } from './plugins';
 import { TitleScene, GameScene } from './scenes';
 
 // setup game config.
-const config = {
+const game = new Phaser.Game({
     type: Phaser.AUTO,
     width: 256,
     height: 256,
@@ -15,10 +15,10 @@ const config = {
         global: [
             // Install a Springroll Application as a global phaser plugin.
             { key: "ApplicationPlugin", plugin: ApplicationPlugin, start: true, mapping: 'app' },
-            { key: "FactoryPlugin", plugin: FactoryPlugin, start: true }
+            { key: "FactoryPlugin", plugin: FactoryPlugin, start: true },
+            { key: "ResizePlugin", plugin: ResizePlugin, start: true, mapping: 'resizer' }
         ]
     },
     scene: [TitleScene, GameScene]
-}
+});
 
-const game = new Phaser.Game(config);
