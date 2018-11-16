@@ -14,6 +14,8 @@ export class ResizePlugin extends Phaser.Plugins.BasePlugin
         this.height = window.innerHeight;
 
         this.ratio = 1;
+
+        this.gameContainer = document.getElementById("gameContent");
     }
 
     start()
@@ -31,21 +33,25 @@ export class ResizePlugin extends Phaser.Plugins.BasePlugin
         const game = this.game;
 
         var w = window.innerWidth;
-		var h = window.innerWidth;
-		var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
-        
-        
-		game.canvas.setAttribute('style',
-			' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
-			' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
-			' transform-origin: top left;'
+        var h = window.innerWidth;
+        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
+
+
+        game.canvas.setAttribute('style',
+            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
+            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
+            ' transform-origin: top left;'
         );
-        
-		const width = w / scale;
+
+        const width = w / scale;
         const height = h / scale;
         game.resize(width, height);
-        
-		game.scene.scenes.forEach(function (scene) {
+
+        this.gameContainer.style.width = `${w}rem`;
+        this.gameContainer.style.height = `${h}rem` ;
+
+        game.scene.scenes.forEach(function(scene)
+        {
             scene.cameras.resize(width, height);
         });
     }
