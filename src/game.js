@@ -1,7 +1,9 @@
 import * as Springroll from 'springroll';
 
+import { GAMEPLAY } from './constants';
+
 import { TitleScene } from './scenes/title';
-import { Property } from 'springroll';
+import { Property, ScaleManager } from 'springroll';
 
 export class Game
 {
@@ -19,6 +21,9 @@ export class Game
 
         this.pixi = new PIXI.Application({ width, height });
         document.getElementById('content').appendChild(this.pixi.view);
+
+        this.resize = this.resize.bind(this);
+        this.scaleManager = new ScaleManager(this.resize);
 
         // Subscribe to required springroll States.
         this.app.state.pause.subscribe((value) =>
@@ -72,5 +77,20 @@ export class Game
         }
 
         this.app.state.scene.value.update(deltaTime);
+    }
+
+    resize(event)
+    {
+        const game = this.game;
+
+        var w = event.width;
+        var h = event.height;
+        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
+
+        this.pixi.renderer.view.setAttribute('style',
+            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
+            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
+            ' transform-origin: top left;'
+        );
     }
 }
