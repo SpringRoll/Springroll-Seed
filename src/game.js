@@ -79,13 +79,9 @@ export class Game
         this.app.state.scene.value.update(deltaTime);
     }
 
-    resize(event)
+    resize({ width, height })
     {
-        const game = this.game;
-
-        var w = event.width;
-        var h = event.height;
-        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
+        let scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
 
         this.pixi.renderer.view.setAttribute('style',
             ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
