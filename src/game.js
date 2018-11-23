@@ -2,7 +2,8 @@ import * as Springroll from 'springroll';
 
 import { TitleScene } from './scenes/title';
 import { GameScene } from './scenes/gameScene';
-import { Property } from 'springroll';
+import { Property, ScaleManager } from 'springroll';
+import { GAMEPLAY } from './constants';
 
 export class Game
 {
@@ -17,6 +18,9 @@ export class Game
                 sfx: true
             }
         });
+
+        this.resize = this.resize.bind(this);
+        this.scaleManager = new ScaleManager(this.resize);
 
         this.stage = new createjs.Stage('stage');
 
@@ -88,5 +92,18 @@ export class Game
         }
 
         this.app.state.scene.value.update(tick.delta / 1000);
+    }
+
+    resize(event)
+    {
+        var w = event.width;
+        var h = event.height;
+        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
+        
+        this.stage.canvas.setAttribute('style',
+            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
+            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
+            ' transform-origin: top left;'
+        );
     }
 }
