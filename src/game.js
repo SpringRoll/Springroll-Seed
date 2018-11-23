@@ -94,11 +94,9 @@ export class Game
         this.app.state.scene.value.update(tick.delta / 1000);
     }
 
-    resize(event)
+    resize({ width, height })
     {
-        var w = event.width;
-        var h = event.height;
-        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
+        var scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
         
         this.stage.canvas.setAttribute('style',
             ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
