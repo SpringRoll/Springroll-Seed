@@ -36,7 +36,7 @@ export class Game
             createjs.Sound.volume = value;
         });
 
-        this.sfxVolume = 1; 
+        this.sfxVolume = 1;
         this.app.state.sfxVolume.subscribe((value) =>
         {
             this.sfxVolume = value;
@@ -73,7 +73,7 @@ export class Game
         // when a new scene is set, add it's container, then start it up
         this.stage.addChild(newScene);
         newScene.start();
-        
+
         // oh, and don't forget to remove the old scene
         if (oldScene)
         {
@@ -96,12 +96,11 @@ export class Game
 
     resize({ width, height })
     {
-        var scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
-        
+        const scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
         this.stage.canvas.setAttribute('style',
-            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
-            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
-            ' transform-origin: top left;'
+            ` -ms-transform: scale(${scale}); -webkit-transform: scale3d(${scale}, 1);
+            -moz-transform: scale(${scale}); -o-transform: scale(${scale});
+            transform: scale(${scale}); transform-origin: top left;`
         );
     }
 }
