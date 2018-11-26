@@ -28,31 +28,26 @@ export class ResizePlugin extends Phaser.Plugins.BasePlugin
         this.scaleManager.disable();
     }
 
-    onResize(event)
+    onResize({width, height})
     {
         const game = this.game;
-
-        var w = window.innerWidth;
-        var h = window.innerWidth;
-        var scale = Math.min(w / GAMEPLAY.WIDTH, h / GAMEPLAY.HEIGHT);
-
-
+        const scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
         game.canvas.setAttribute('style',
-            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
-            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
-            ' transform-origin: top left;'
+            ` -ms-transform: scale(${scale}); -webkit-transform: scale3d(${scale}, 1);
+            -moz-transform: scale(${scale}); -o-transform: scale(${scale});
+            transform: scale(${scale}); transform-origin: top left;`
         );
 
-        const width = w / scale;
-        const height = h / scale;
+        const w = width / scale;
+        const h = height / scale;
         game.resize(width, height);
 
-        this.gameContainer.style.width = `${w}rem`;
-        this.gameContainer.style.height = `${h}rem` ;
+        this.gameContainer.style.width = `${width}rem`;
+        this.gameContainer.style.height = `${height}rem` ;
 
         game.scene.scenes.forEach(function(scene)
         {
-            scene.cameras.resize(width, height);
+            scene.cameras.resize(w, h);
         });
     }
 }
