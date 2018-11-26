@@ -82,7 +82,7 @@ export class Game
     resize({ width, height })
     {
         const scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
-        this.stage.canvas.setAttribute('style',
+        this.pixi.renderer.view.setAttribute('style',
             ` -ms-transform: scale(${scale}); -webkit-transform: scale3d(${scale}, 1);
             -moz-transform: scale(${scale}); -o-transform: scale(${scale});
             transform: scale(${scale}); transform-origin: top left;`
