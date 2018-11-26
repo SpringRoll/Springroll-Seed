@@ -81,12 +81,11 @@ export class Game
 
     resize({ width, height })
     {
-        let scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
-
-        this.pixi.renderer.view.setAttribute('style',
-            ' -ms-transform: scale(' + scale + '); -webkit-transform: scale3d(' + scale + ', 1);' +
-            ' -moz-transform: scale(' + scale + '); -o-transform: scale(' + scale + '); transform: scale(' + scale + ');' +
-            ' transform-origin: top left;'
+        const scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
+        this.stage.canvas.setAttribute('style',
+            ` -ms-transform: scale(${scale}); -webkit-transform: scale3d(${scale}, 1);
+            -moz-transform: scale(${scale}); -o-transform: scale(${scale});
+            transform: scale(${scale}); transform-origin: top left;`
         );
     }
 }
