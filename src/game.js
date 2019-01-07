@@ -2,7 +2,8 @@ import * as Springroll from 'springroll';
 
 import { TitleScene } from './scenes/title';
 import { GameScene } from './scenes/gameScene';
-import { Property } from 'springroll';
+import { Property, ScaleManager } from 'springroll';
+import { GAMEPLAY } from './constants';
 
 export class Game
 {
@@ -18,6 +19,9 @@ export class Game
             }
         });
 
+        this.resize = this.resize.bind(this);
+        this.scaleManager = new ScaleManager(this.resize);
+
         this.stage = new createjs.Stage('stage');
 
         // Subscribe to required springroll States.
@@ -32,7 +36,7 @@ export class Game
             createjs.Sound.volume = value;
         });
 
-        this.sfxVolume = 1; 
+        this.sfxVolume = 1;
         this.app.state.sfxVolume.subscribe((value) =>
         {
             this.sfxVolume = value;
@@ -69,7 +73,7 @@ export class Game
         // when a new scene is set, add it's container, then start it up
         this.stage.addChild(newScene);
         newScene.start();
-        
+
         // oh, and don't forget to remove the old scene
         if (oldScene)
         {
@@ -88,5 +92,15 @@ export class Game
         }
 
         this.app.state.scene.value.update(tick.delta / 1000);
+    }
+
+    resize({ width, height })
+    {
+        const scale = Math.min(width / GAMEPLAY.WIDTH, height / GAMEPLAY.HEIGHT);
+        this.stage.canvas.setAttribute('style',
+            ` -ms-transform: scale(${scale}); -webkit-transform: scale3d(${scale}, 1);
+            -moz-transform: scale(${scale}); -o-transform: scale(${scale});
+            transform: scale(${scale}); transform-origin: top left;`
+        );
     }
 }
