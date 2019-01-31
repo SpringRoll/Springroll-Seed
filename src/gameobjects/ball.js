@@ -18,11 +18,10 @@ export class Ball extends PIXI.Sprite
     {
         this.velocity.y += GAMEPLAY.GRAVITY * deltaTime;
         this.position.y += this.velocity.y * deltaTime;
-
-        const bounds = this.getBounds();      
-        if(bounds.bottom >= GAMEPLAY.HEIGHT)
+            
+        if(this.position.y > 680)
         {
-            this.position.y = (GAMEPLAY.HEIGHT - bounds.height / 2) - 1;
+            this.position.y = 679;
             this.velocity.y *= -1;
 
             this.hitSound.play();
