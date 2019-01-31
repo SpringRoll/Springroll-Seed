@@ -18,7 +18,9 @@ module.exports = env => {
     mode: env.dev ? 'development' : 'production',
 
     devServer: {
-      contentBase: path.join(__dirname, '/static')
+      contentBase: path.join(__dirname, '/static'),
+      host: '0.0.0.0',
+      disableHostCheck: true
     },
 
     entry: ['@babel/polyfill', path.join(__dirname, '/src/index.js')],

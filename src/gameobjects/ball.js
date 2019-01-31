@@ -25,10 +25,9 @@ export class Ball extends Phaser.GameObjects.Sprite
         this.velY += GAMEPLAY.GRAVITY;
         this.y += this.velY;
 
-        const bounds = this.getBounds();
-        if(bounds.bottom >= GAMEPLAY.HEIGHT)
+        if(this.y >= 680)
         {
-            this.y = (GAMEPLAY.HEIGHT - bounds.height / 2) - 1;
+            this.y = 680 - 1;
             this.velY *= -1;
 
             this.hitSound.play();
