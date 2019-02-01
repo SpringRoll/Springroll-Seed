@@ -27,8 +27,7 @@ const game = new Phaser.Game(
                 {
                     width: GAMEPLAY.WIDTH,
                     height: GAMEPLAY.HEIGHT,
-                    safeWidth: GAMEPLAY.SAFE_WIDTH,
-                    safeHeight: GAMEPLAY.SAFE_HEIGHT
+
                 }
             }
         ]

@@ -32,11 +32,11 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
         this.scaleManager.disable();
     }
 
-    onResize({ width, height, sx, sy })
+    onResize({ width, height, scale })
     {
         const game = this.game;
 
-        game.renderer.resize(GAMEPLAY.WIDTH / sx, GAMEPLAY.HEIGHT / sy)
+        game.renderer.resize(GAMEPLAY.WIDTH / scale.x, GAMEPLAY.HEIGHT / scale.y)
 
         game.canvas.style.width = `${width}px`;
         game.canvas.style.height = `${height}px`;
@@ -45,12 +45,13 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
         game.canvas.style.left = '0px';
         game.canvas.style.top = '0px';
 
-        const { x, y } = this.scaleManager.calcOffset(sx, sy);
+        const { x, y } = this.scaleManager.calcOffset(scale);
+
 
         // this event is listened to by each scene 
         // to update each camera's viewport as needed.
         this.events.emit('resize', { x: -x, y: -y, width: this.scaleManager.gameWidth, height: this.scaleManager.gameHeight });
-        this.lastResize = { width, height, sx, sy };
+        this.lastResize = { width, height, scale };
     }
 
     addAnchor(anchor)

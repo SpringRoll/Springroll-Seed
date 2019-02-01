@@ -38,11 +38,11 @@ export class TitleScene extends BaseScene
         startText.on('pointerdown', this.startText_onPointerDown, this);
 
         // Anchor the text to the top left of the screen. { -1, -1 }
-        this.textAnchor = new Anchor({x: 40, y: 30}, {x: -1, y: -1}, (x, y) =>
+        this.textAnchor = new Anchor({position: {x: 40, y: 30}, callback: ({x, y}) =>
         {
             startText.x = x;
             startText.y = y;
-        });
+        }});
         this.scaleManager.addAnchor(this.textAnchor);
     }
 
