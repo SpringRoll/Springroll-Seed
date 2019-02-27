@@ -55,21 +55,6 @@ export class Game
             
         });
 
-
-        //Test Text
-        /*
-        this.testText = new PIXI.Text('Click me!',
-        {
-            fill: 0xffffff
-        });
-        this.testText.interactive = true;
-        this.testText.anchor.set(0.5, 0.5);
-
-        this.testText.on('pointerdown', () =>
-        {
-            console.log('test');
-        });
-        */
     }
 
     run()
