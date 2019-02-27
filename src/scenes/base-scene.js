@@ -1,5 +1,6 @@
 import Phaser from 'phaser'
 import { GAMEPLAY } from '../constants';
+import { CameraPositioner } from '../gameobjects';
 
 /** 
  * @typedef {import('../plugins/application-plugin').ApplicationPlugin} ApplicationPlugin 
@@ -31,25 +32,15 @@ export class BaseScene extends Phaser.Scene
 
     create()
     {      
-        this.scaleManager.events.addListener('resize', this.onViewportChange, this);
         this.events.addListener('shutdown', this.shutdown, this);
 
-        // resize needs to be called on scene load
-        // because each scene has it's own camera.
-        this.scaleManager.forceRecheck();
-    }
-
-    onViewportChange({ x, y, width, height })
-    {
-        // Part of the scaling in Phaser involves shifting the
-        // camera's viewport. camera's are handled per-scene.
-        // this can also be edited to support multiple cameras
-        // IE: split-screen multiplayer games. 
-        this.cameras.main.setViewport(x, y, width, height);
+        // Part of the Scaling for Phaser involves offsetting the viewport.
+        this.cameraPositioner = new CameraPositioner(this.cameras.main);
+        this.scaleManager.addEntity(this.cameraPositioner);
     }
 
     shutdown()
     {
-        this.scaleManager.events.removeListener('resize', this.onViewportChange, this);
+        this.scaleManager.removeEntity(this.cameraPositioner);
     }
 }

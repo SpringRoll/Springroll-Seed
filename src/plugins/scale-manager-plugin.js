@@ -12,7 +12,6 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
     {
         super(pluginManager);
         this.onResize = this.onResize.bind(this);
-        this.events = new EventEmitter();
 
         this.gameContainer = document.getElementById("gameContent");
     }
@@ -46,22 +45,16 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
         game.canvas.style.top = '0px';
 
         const { x, y } = this.scaleManager.calcOffset(scale);
-
-
-        // this event is listened to by each scene 
-        // to update each camera's viewport as needed.
-        this.events.emit('resize', { x: -x, y: -y, width: this.scaleManager.gameWidth, height: this.scaleManager.gameHeight });
-        this.lastResize = { width, height, scale };
     }
 
-    addAnchor(anchor)
+    addEntity(entity)
     {
-        this.scaleManager.addAnchor(anchor);
+        this.scaleManager.addEntity(entity);
     }
 
-    removeAnchor(anchor)
+    removeEntity(entity)
     {
-        this.scaleManager.removeAnchor(anchor);
+        this.scaleManager.removeEntity(entity);
     }
 
     forceRecheck()

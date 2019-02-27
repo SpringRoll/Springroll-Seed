@@ -43,7 +43,7 @@ export class TitleScene extends BaseScene
             startText.x = x;
             startText.y = y;
         }});
-        this.scaleManager.addAnchor(this.textAnchor);
+        this.scaleManager.addEntity(this.textAnchor);
     }
 
     startText_onPointerDown(pointer)
@@ -53,7 +53,7 @@ export class TitleScene extends BaseScene
 
     shutdown()
     {
-        this.scaleManager.removeAnchor(this.textAnchor);
+        this.scaleManager.removeEntity(this.textAnchor);
         super.shutdown();
     }
 }
