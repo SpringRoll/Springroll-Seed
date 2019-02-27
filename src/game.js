@@ -108,7 +108,7 @@ export class Game
 
     }
 
-    resize({ width, height, sx, sy })
+    resize({ width, height, scale })
     {
         // -- PIXI -- //
         const view = this.pixi.view;
@@ -116,7 +116,7 @@ export class Game
         const renderer = this.pixi.renderer;
 
         stage.position.set(renderer.width / 2, renderer.height / 2);
-        stage.scale.set(sx, sy);
+        stage.scale.set(scale.x, scale.y);
 
         stage.pivot.x = renderer.width / 2;
         stage.pivot.y = renderer.height / 2;
@@ -126,6 +126,6 @@ export class Game
 
         view.style.position = 'absolute'
         view.style.left = '0px';
-        view.style.top = '0px';   
+        view.style.top = '0px';  
     }
 }

@@ -44,7 +44,12 @@ export class TitleScene extends PIXI.Container
 
         });
 
-        this.game.scaleManager.addAnchor(new Anchor({ x: 66, y: 25 }, { x: -1, y: -1 }, (x, y) => text.position.set(x, y)));
+        this.game.scaleManager.addEntity(new Anchor(
+        {
+            position: { x: 66, y: 25 },
+            direction: { x: -1, y: -1 },
+            callback: ({x, y}) => text.position.set(x, y)
+        }));
 
         this.addChild(text);
         //*/
