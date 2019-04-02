@@ -1,6 +1,6 @@
 export const GAMEPLAY = Object.freeze(
 {
-    WIDTH: 256,
-    HEIGHT: 256,
+    WIDTH: 1320,
+    HEIGHT: 780,
     GRAVITY: 0.098
 });
