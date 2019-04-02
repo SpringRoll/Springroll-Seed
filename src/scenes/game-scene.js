@@ -1,4 +1,4 @@
-import { SCENE } from '../constants';
+import { SCENE, GAMEPLAY } from '../constants';
 import { BaseScene } from "./base-scene";
 
 export class GameScene extends BaseScene
@@ -17,10 +17,13 @@ export class GameScene extends BaseScene
 
     create()
     {
+        super.create();
+        this.add.image(GAMEPLAY.WIDTH / 2, GAMEPLAY.HEIGHT / 2, 'background');
+
         // this.add.ball() is added to phaser in the factory-plugin.
         // it's not a necessity, but it is a convenient way of
         // adding custom gameobjects.
-        this.add.ball(256 / 4, 0);
-        this.add.ball(256 / 4 * 3, 128);
+        this.add.ball(GAMEPLAY.WIDTH / 2 - 100, (GAMEPLAY.HEIGHT / 2));
+        this.add.ball(GAMEPLAY.WIDTH / 2 + 100, (GAMEPLAY.HEIGHT / 4));
     }
 }

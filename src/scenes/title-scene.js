@@ -1,7 +1,8 @@
 import Phaser from 'phaser';
 
 import { BaseScene } from "./base-scene";
-import { SCENE } from "../constants";
+import { SCENE, GAMEPLAY } from "../constants";
+import { Anchor } from 'springroll';
 
 export class TitleScene extends BaseScene
 {
@@ -10,15 +11,22 @@ export class TitleScene extends BaseScene
         super({ key: SCENE.TITLE })
     }
 
+    preload()
+    {
+        // load assets
+        this.load.image('background', './assets/BG1320x780-2.png')
+    }
+
     create()
     {
+        super.create();
         const width = this.cameras.main.width;
         const height = this.cameras.main.height;
 
+        this.add.image(GAMEPLAY.WIDTH / 2, GAMEPLAY.HEIGHT / 2, 'background');
+
         const startText = this.make.text(
         {
-            x: 10,
-            y: 10,
             text: 'Click Here!',
             style:
             {
@@ -26,12 +34,26 @@ export class TitleScene extends BaseScene
                 fill: '#FFFFFF'
             }
         });
-        startText.setInteractive();
+        startText.setInteractive()
         startText.on('pointerdown', this.startText_onPointerDown, this);
+
+        // Anchor the text to the top left of the screen. { -1, -1 }
+        this.textAnchor = new Anchor({position: {x: 40, y: 30}, callback: ({x, y}) =>
+        {
+            startText.x = x;
+            startText.y = y;
+        }});
+        this.scaleManager.addEntity(this.textAnchor);
     }
 
     startText_onPointerDown(pointer)
     {
         this.scene.start(SCENE.GAME);
+    }
+
+    shutdown()
+    {
+        this.scaleManager.removeEntity(this.textAnchor);
+        super.shutdown();
     }
 }
