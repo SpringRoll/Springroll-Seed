@@ -1,6 +1,6 @@
-# Springroll Seed
+# Springroll Seed - PIXI4
 
-Developers should use SpringRoll Seed as a starting point for games projects. It comes bundled with Webpack, Babel, and a few node modules to streamline development.
+Developers should use SpringRoll Seed as a starting point for games projects. It comes bundled with Webpack, Babel, and a few node modules to streamline development. This versions comes with an example of how to implement a simple Springroll game using PIXI4
 
 ## Setup
 
