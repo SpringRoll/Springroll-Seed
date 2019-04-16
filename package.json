@@ -11,9 +11,9 @@
   "author": "Andrew Smith",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.4.3",
     "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-env": "^7.4.3",
     "babel-loader": "^8.0.2",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
@@ -22,7 +22,7 @@
     "mini-css-extract-plugin": "^0.4.2",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.7"
+    "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
     "pixi-sound": "^2.0.3",
