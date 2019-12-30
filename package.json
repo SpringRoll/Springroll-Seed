@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "pixi-sound": "^2.0.3",
-    "pixi.js": "^4.8.2"
+    "pixi.js": "^4.8.2",
+    "springroll": "^2.1.1"
   }
 }
