@@ -3,7 +3,7 @@ import * as Springroll from 'springroll';
 import { GAMEPLAY } from './constants';
 
 import { TitleScene } from './scenes/title';
-import { Property, ScaleManager } from 'springroll';
+import { Property, SafeScaleManager } from 'springroll';
 
 export class Game
 {
@@ -23,7 +23,7 @@ export class Game
         document.getElementById('content').appendChild(this.pixi.view);
 
         this.resize = this.resize.bind(this);
-        this.scaleManager = new ScaleManager({width, height, safeWidth: 1024, safeHeight: 660, callback: this.resize});
+        this.scaleManager = new SafeScaleManager({width, height, safeWidth: 1024, safeHeight: 660, callback: this.resize});
 
         // Subscribe to required springroll States.
         this.app.state.pause.subscribe((value) =>
