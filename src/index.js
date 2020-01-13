@@ -11,7 +11,7 @@ const game = new Phaser.Game(
     width: GAMEPLAY.WIDTH,
     height: GAMEPLAY.HEIGHT,
     backgroundColor: '#000000', //'#6495ED', // <-- Cornflower Blue
-    parent: 'gameContent',
+    parent: 'gameTarget',
     plugins:
     {
         global: [

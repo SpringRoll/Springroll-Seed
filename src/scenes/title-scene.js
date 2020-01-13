@@ -36,13 +36,18 @@ export class TitleScene extends BaseScene
         });
         startText.setInteractive()
         startText.on('pointerdown', this.startText_onPointerDown, this);
-
+        startText.setOrigin(0.5, 0.5);
         // Anchor the text to the top left of the screen. { -1, -1 }
-        this.textAnchor = new Anchor({position: {x: 40, y: 30}, callback: ({x, y}) =>
+        this.textAnchor = new Anchor(
         {
-            startText.x = x;
-            startText.y = y;
-        }});
+            position: { x: 0, y: 0 },
+            direction: {x: -0.5, y: -0.5},
+            callback: ({ x, y }) =>
+            {
+                startText.x = x;
+                startText.y = y;
+            }
+        });
         this.scaleManager.addEntity(this.textAnchor);
     }
 
