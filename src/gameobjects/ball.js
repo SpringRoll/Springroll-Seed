@@ -28,10 +28,11 @@ export class Ball extends createjs.Bitmap
         this.y += this.velY;
 
         const bounds = this.getBounds();  
+        const bottom = GAMEPLAY.MAX_HEIGHT - (GAMEPLAY.MAX_HEIGHT - GAMEPLAY.SAFE_HEIGHT) / 2;
         
-        if((bounds.height / 2) + this.y >= GAMEPLAY.HEIGHT)
+        if((bounds.height / 2) + this.y >= bottom)
         {
-            this.y = (GAMEPLAY.HEIGHT - bounds.height / 2) - 1;
+            this.y = (bottom - bounds.height / 2) - 1;
             this.velY *= -1;
 
             if(!this.hitSound)
