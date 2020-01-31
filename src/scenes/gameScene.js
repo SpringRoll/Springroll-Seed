@@ -34,7 +34,6 @@ export class GameScene extends Scene
         this.background = new createjs.Bitmap(GameCache.images["background"]);
         this.addChild(this.background);
 
-        console.log(this.game.height)
         // add some items to this scene
         this.ball = new Ball({ game: this.game,  x: (this.game.width / 4) * 3, y: this.game.height / 2 });
         this.addChild(this.ball);

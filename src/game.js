@@ -99,9 +99,9 @@ export class Game
         this.app.state.scene.value.update(tick.delta / 1000);
     }
 
-    resize({ scaleMod })
+    resize({ scaleRatio })
     {
-        this.stage.canvas.style.width = `${GAMEPLAY.MAX_WIDTH * scaleMod}px`
-        this.stage.canvas.style.height = `${GAMEPLAY.MAX_HEIGHT * scaleMod}px`
+        this.stage.canvas.style.width = `${GAMEPLAY.MAX_WIDTH * scaleRatio}px`
+        this.stage.canvas.style.height = `${GAMEPLAY.MAX_HEIGHT * scaleRatio}px`
     }
 }
