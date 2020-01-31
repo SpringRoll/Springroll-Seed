@@ -29,28 +29,12 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
         this.scaleManager.disable();
     }
 
-    onResize({ scaleMod })
+    onResize({ scaleRatio })
     {
         const canvas = this.game.canvas;
 
-        canvas.style.width = `${this.scaleManager.gameWidth * scaleMod}px`;
-        canvas.style.height = `${this.scaleManager.gameHeight * scaleMod}px`;
-
-
-        /*
-
-        game.renderer.resize(GAMEPLAY.WIDTH / scale.x, GAMEPLAY.HEIGHT / scale.y)
-
-        game.canvas.style.width = `${width}px`;
-        game.canvas.style.height = `${height}px`;
-
-        game.canvas.style.position = 'absolute'
-        game.canvas.style.left = '0px';
-        game.canvas.style.top = '0px';
-
-        const { x, y } = this.scaleManager.calcOffset(scale);
-
-        */
+        canvas.style.width = `${this.scaleManager.gameWidth * scaleRatio}px`;
+        canvas.style.height = `${this.scaleManager.gameHeight * scaleRatio}px`;
     }
 
     addEntity(entity)
