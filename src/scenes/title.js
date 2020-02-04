@@ -1,5 +1,6 @@
 import { GameScene } from './gameScene';
 import { Scene } from './scene';
+import { Anchor } from 'springroll';
 
 export class TitleScene extends Scene
 {
@@ -11,7 +12,9 @@ export class TitleScene extends Scene
     start()
     {
         // a clickable label to cause a scene change
-        let text = new createjs.Text("Click me!", "20px Arial", "#ffffff");
+        const text = new createjs.Text("Click me!", "20px Arial", "#ffffff");
+        text.x = 0;
+        text.y = 0;
 
         text.addEventListener("click", () =>
         {
@@ -22,6 +25,16 @@ export class TitleScene extends Scene
                 this.game.app.state.scene.value = nextScene;
             });
         });
+
+        const topLeft = new Anchor({
+            position: { x: 10, y: 10 },
+            direction: { x: -1, y: -1 },
+            callback: ({ x, y }) => {
+                text.x = x;
+                text.y = y;
+            }
+        });
+        this.game.scaleManager.addEntity(topLeft);
 
         this.addChild(text);
     }

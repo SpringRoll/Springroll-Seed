@@ -16,8 +16,8 @@ module.exports = {
       Allows to overwrite the parameters used in the template */
   templateParameters: {
     title: 'Springroll',
-    width: 256,
-    height: 256
+    width: 1320,
+    height: 780
   },
 
   /* {boolean | string} true || 'head' || 'body' ||
