@@ -1,6 +1,5 @@
 import Phaser from 'phaser'
 import { GAMEPLAY } from '../constants';
-import { CameraPositioner } from '../gameobjects';
 
 /** 
  * @typedef {import('../plugins/application-plugin').ApplicationPlugin} ApplicationPlugin 
@@ -33,14 +32,9 @@ export class BaseScene extends Phaser.Scene
     create()
     {      
         this.events.addListener('shutdown', this.shutdown, this);
-
-        // Part of the Scaling for Phaser involves offsetting the viewport.
-        this.cameraPositioner = new CameraPositioner(this.cameras.main);
-        this.scaleManager.addEntity(this.cameraPositioner);
     }
 
     shutdown()
     {
-        this.scaleManager.removeEntity(this.cameraPositioner);
     }
 }

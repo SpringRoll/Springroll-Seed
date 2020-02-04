@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { EventEmitter } from 'eventemitter3'
 
-import { ScaleManager } from 'springroll';
+import { SafeScaleManager } from 'springroll';
 import { GAMEPLAY } from '../constants';
 
 // The ScaleManagerPlugin is just a wrapper for Springroll's
@@ -12,13 +12,11 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
     {
         super(pluginManager);
         this.onResize = this.onResize.bind(this);
-
-        this.gameContainer = document.getElementById("gameContent");
     }
 
     init({ width, height, safeWidth, safeHeight })
     {
-        this.scaleManager = new ScaleManager({ width, height, safeWidth, safeHeight });
+        this.scaleManager = new SafeScaleManager({ width, height, safeWidth, safeHeight });
     }
 
     start()
@@ -31,20 +29,12 @@ export class ScaleManagerPlugin extends Phaser.Plugins.BasePlugin
         this.scaleManager.disable();
     }
 
-    onResize({ width, height, scale })
+    onResize({ scaleRatio })
     {
-        const game = this.game;
+        const canvas = this.game.canvas;
 
-        game.renderer.resize(GAMEPLAY.WIDTH / scale.x, GAMEPLAY.HEIGHT / scale.y)
-
-        game.canvas.style.width = `${width}px`;
-        game.canvas.style.height = `${height}px`;
-
-        game.canvas.style.position = 'absolute'
-        game.canvas.style.left = '0px';
-        game.canvas.style.top = '0px';
-
-        const { x, y } = this.scaleManager.calcOffset(scale);
+        canvas.style.width = `${this.scaleManager.gameWidth * scaleRatio}px`;
+        canvas.style.height = `${this.scaleManager.gameHeight * scaleRatio}px`;
     }
 
     addEntity(entity)
