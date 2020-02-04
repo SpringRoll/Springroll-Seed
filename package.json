@@ -27,6 +27,6 @@
   "dependencies": {
     "pixi-sound": "^2.0.3",
     "pixi.js": "^4.8.2",
-    "springroll": "git:github.com/SpringRoll/SpringRoll.git#develop"
+    "springroll": "^2.2.0"
   }
 }
