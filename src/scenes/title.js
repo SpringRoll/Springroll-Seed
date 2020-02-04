@@ -27,6 +27,7 @@ export class TitleScene extends Scene
         });
 
         const topLeft = new Anchor({
+            position: { x: 10, y: 10 },
             direction: { x: -1, y: -1 },
             callback: ({ x, y }) => {
                 text.x = x;

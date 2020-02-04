@@ -25,6 +25,6 @@
     "webpack-dev-server": "^3.3.1"
   },
   "dependencies": {
-    "springroll": "git:github.com/SpringRoll/SpringRoll.git#develop"
+    "springroll": "^2.2.0"
   }
 }
