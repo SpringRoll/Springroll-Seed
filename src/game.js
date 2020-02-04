@@ -93,24 +93,12 @@ export class Game
 
     }
 
-    resize({ width, height, scale })
+    resize({ scaleRatio })
     {
         // -- PIXI -- //
-        const view = this.pixi.view;
-        const stage = this.pixi.stage;
         const renderer = this.pixi.renderer;
 
-        stage.position.set(renderer.width / 2, renderer.height / 2);
-        stage.scale.set(scale.x, scale.y);
-
-        stage.pivot.x = renderer.width / 2;
-        stage.pivot.y = renderer.height / 2;
-
-        view.style.width = width + 'px';
-        view.style.height = height + 'px';
-
-        view.style.position = 'absolute'
-        view.style.left = '0px';
-        view.style.top = '0px';  
+        renderer.view.style.width = `${GAMEPLAY.WIDTH * scaleRatio}px`;
+        renderer.view.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`; 
     }
 }
