@@ -1,3 +1,5 @@
+import createjs from 'createjs';
+
 export class Scene extends createjs.Container
 {
     constructor(game)
