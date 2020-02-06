@@ -3,13 +3,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
+const CleanPlugin = require('clean-webpack-plugin');
 
 const deploy = path.join(__dirname, 'deploy');
 
 module.exports = env => {
   const plugins = [
+    new CleanPlugin.CleanWebpackPlugin(),
     new HtmlWebpackPlugin(HtmlConfig),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ filename: 'css/game.style.css' }),
     new CopyPlugin([{ from: path.join(__dirname + '/static'), to: deploy }])
   ];
   return {
@@ -18,8 +20,11 @@ module.exports = env => {
     mode: env.dev ? 'development' : 'production',
 
     devServer: {
+      open: true,
+      overlay: true,
       contentBase: path.join(__dirname, '/static'),
       host: '0.0.0.0',
+      public: 'localhost:8080',
       disableHostCheck: true
     },
 
@@ -27,15 +32,12 @@ module.exports = env => {
 
     entry: ['@babel/polyfill', path.join(__dirname, '/src/index.js')],
     output: {
+      filename: 'js/game.bundle.js',
       path: deploy
     },
 
-    optimization: {
-      splitChunks: {
-        chunks: 'all'
-      }
-    },
     plugins,
+
     module: {
       rules: [
         {
