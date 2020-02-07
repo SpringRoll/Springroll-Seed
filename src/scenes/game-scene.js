@@ -1,13 +1,7 @@
-import { SCENE, GAMEPLAY } from '../constants';
-import { BaseScene } from "./base-scene";
+import { GAMEPLAY } from '../constants';
 
-export class GameScene extends BaseScene
+export class GameScene extends Phaser.Scene
 {
-    constructor()
-    {
-        super({ key: SCENE.GAME });
-    }
-
     preload()
     {
         // load assets
@@ -17,7 +11,6 @@ export class GameScene extends BaseScene
 
     create()
     {
-        super.create();
         this.add.image(GAMEPLAY.WIDTH / 2, GAMEPLAY.HEIGHT / 2, 'background');
 
         // this.add.ball() is added to phaser in the factory-plugin.

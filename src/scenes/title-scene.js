@@ -1,16 +1,11 @@
 import Phaser from 'phaser';
 
-import { BaseScene } from "./base-scene";
 import { SCENE, GAMEPLAY } from "../constants";
 import { Anchor } from 'springroll';
+import { springrollGame } from '../SpringrollGame';
 
-export class TitleScene extends BaseScene
+export class TitleScene extends Phaser.Scene
 {
-    constructor()
-    {
-        super({ key: SCENE.TITLE })
-    }
-
     preload()
     {
         // load assets
@@ -19,10 +14,6 @@ export class TitleScene extends BaseScene
 
     create()
     {
-        super.create();
-        const width = this.cameras.main.width;
-        const height = this.cameras.main.height;
-
         this.add.image(GAMEPLAY.WIDTH / 2, GAMEPLAY.HEIGHT / 2, 'background');
 
         const startText = this.make.text(
@@ -47,17 +38,11 @@ export class TitleScene extends BaseScene
                 startText.y = y;
             }
         });
-        this.scaleManager.addEntity(this.textAnchor);
+        springrollGame.safeScale.addEntity(this.textAnchor);
     }
 
     startText_onPointerDown(pointer)
     {
         this.scene.start(SCENE.GAME);
-    }
-
-    shutdown()
-    {
-        this.scaleManager.removeEntity(this.textAnchor);
-        super.shutdown();
     }
 }

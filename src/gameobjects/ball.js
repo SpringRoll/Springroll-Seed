@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GAMEPLAY } from '../constants';
+import { springrollGame } from '../SpringrollGame';
 
 
 export class Ball extends Phaser.GameObjects.Sprite
@@ -14,7 +15,7 @@ export class Ball extends Phaser.GameObjects.Sprite
         // listen for state changes on SFX volume
         this.sfxChangeBound = this.onSFXVolumeChange.bind(this);
 
-        const sfxState =  this.scene.app.state.sfxVolume;
+        const sfxState =  springrollGame.application.state.sfxVolume;
 
         sfxState.subscribe(this.sfxChangeBound);
         this.hitSound.volume = sfxState.value;
