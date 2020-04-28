@@ -1,7 +1,5 @@
-import * as Springroll from 'springroll';
-
 import { TitleScene } from './scenes/title';
-import { Property, SafeScaleManager } from 'springroll';
+import { Property, SafeScaleManager, Application } from 'springroll';
 import { GAMEPLAY } from './constants';
 
 export class Game
@@ -10,7 +8,7 @@ export class Game
     {
         this.width = width;
         this.height = height;
-        this.app = new Springroll.Application(
+        this.app = new Application(
         {
             features:
             {
