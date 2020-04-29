@@ -47,9 +47,7 @@ module.exports = env => {
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
-          use: {
-            loader: 'babel-loader'
-          }
+          use: ['babel-loader', 'eslint-loader']
         },
         {
           test: /\.(otf|woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
