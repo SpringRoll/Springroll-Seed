@@ -21,7 +21,9 @@ module.exports = env => {
 
     devServer: {
       open: true,
-      overlay:true,
+      overlay: true,
+      host: '0.0.0.0',
+      public: 'localhost:8080',
       contentBase: path.join(__dirname, '/static')
     },
 
