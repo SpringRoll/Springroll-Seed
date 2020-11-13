@@ -30,7 +30,16 @@ class SpringrollGame {
             // Listen for container events from the application.
             this.application.state.pause.subscribe(this.onApplicationPause.bind(this));
             this.application.state.soundVolume.subscribe(this.onMasterVolumeChange.bind(this));
-
+            this.application.state.musicVolume.subscribe(result => {
+                console.log('musicVolume: ', result);
+            });
+            this.application.state.voVolume.subscribe(result => {
+                console.log('voVolume: ', result);
+            });
+            this.application.state.captionsMuted.subscribe(result => {
+                console.log('captionsMuted: ', result);
+            });
+            
             // Create a Phaser.Game.
             this.game = new Phaser.Game({
                 type: Phaser.AUTO,
