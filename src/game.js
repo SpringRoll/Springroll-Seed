@@ -40,6 +40,14 @@ export class Game
             // in a full game this should be handled gracefully.
             PIXI.loader.resources['bounce'].sound.volume = value;
         });
+        testApp.state.musicVolume.subscribe(result => 
+        {
+            console.log('musicVolume: ', result);
+        });
+        testApp.state.voVolume.subscribe(result => 
+        {
+            console.log('voVolume: ', result);
+        });
 
         // add a extra state property for storying the current scene. Whenever the scene is changed, this class
         // will swap out the container attached to the stage
