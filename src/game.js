@@ -46,6 +46,19 @@ export class Game
         this.app.state.scene = new Property(null);
         this.app.state.scene.subscribe(this.onChangeScene.bind(this));
 
+        this.application.state.musicVolume.subscribe(result => 
+        {
+            console.log('musicVolume: ', result);
+        });
+        this.application.state.voVolume.subscribe(result => 
+        {
+            console.log('voVolume: ', result);
+        });
+        this.application.state.captionsMuted.subscribe(result => 
+        {
+            console.log('captionsMuted: ', result);
+        });
+
         // wait for the app to be ready, then set the new scene
         this.app.state.ready.subscribe(() =>
         {
