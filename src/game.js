@@ -53,7 +53,7 @@ export class Game
             console.log('voVolume: ', result);
         });
         this.app.state.captionsMuted.subscribe(result => 
-            {
+        {
             console.log('captionsMuted: ', result);
         });
 
