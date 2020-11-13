@@ -40,7 +40,6 @@ class SpringrollGame {
                 console.log('captionsMuted: ', result);
             });
             
-
             // Create a Phaser.Game.
             this.game = new Phaser.Game({
                 type: Phaser.AUTO,
