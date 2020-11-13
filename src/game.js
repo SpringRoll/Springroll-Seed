@@ -44,6 +44,17 @@ export class Game
         {
             this.sfxVolume = value;
         });
+        this.app.state.musicVolume.subscribe(result => 
+        {
+            console.log('musicVolume: ', result);
+        });
+        this.app.state.voVolume.subscribe(result => 
+        {
+            console.log('voVolume: ', result);
+        });
+        this.app.state.captionsMuted.subscribe(result => {
+            console.log('captionsMuted: ', result);
+        });
 
         // add an extra state property for storying the current scene. Whenever the scene is changed, this class
         // will swap out the container attached to the stage
