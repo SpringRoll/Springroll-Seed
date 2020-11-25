@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
 const CleanPlugin = require('clean-webpack-plugin');
+const os = require('os');
 
 const deploy = path.join(__dirname, 'deploy');
 
@@ -14,6 +15,30 @@ module.exports = env => {
     new MiniCssExtractPlugin({ filename: 'css/game.style.css' }),
     new CopyPlugin([{ from: path.join(__dirname + '/static') }])
   ];
+
+  // Get running network information
+  let networkInfo = os.networkInterfaces();
+  let ipAddress;
+
+  // Depending on operating system the network interface will be named differntly. Check if each exists to find the correct syntax
+  if (networkInfo.en0){
+    ipAddress = networkInfo.en0[1].address;
+  } else if (networkInfo.en7) {
+    ipAddress = networkInfo.en7[1].address;
+  } else  if (networkInfo['Wi-Fi']){
+    ipAddress = networkInfo['Wi-Fi'][1].address;
+  } else  if (networkInfo['Ethernet']){
+    ipAddress = networkInfo['Ethernet'][1].address;
+  } else  if (networkInfo.eth0){
+    ipAddress = networkInfo.eth0[1].address;
+  }
+  
+  if (ipAddress) {
+    console.log('\x1b[36m%s\x1b[0m', "NETWORK HOST: http://" + ipAddress + ":8080") 
+  } else {
+    console.log('\x1b[36m%s\x1b[0m', "Unable to find network address");
+  }
+
   return {
     stats: 'errors-only',
 
