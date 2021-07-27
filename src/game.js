@@ -17,8 +17,12 @@ export class Game
             {
                 sfx: true,
                 sound: true,
+                music: true,
+                vo: true,
                 sfxVolume: true,
                 soundVolume: true,
+                musicVolume: true,
+                voVolume: true,
             }
         });
 
