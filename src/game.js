@@ -13,6 +13,8 @@ export class Game
         this.height = height;
         this.app = new Application(
         {
+            // This feature list matches the Springroll states subscribed to below
+            // Note: features will only work if the Container environment also supports controls for that feature.
             features:
             {
                 sfx: true,
@@ -23,6 +25,7 @@ export class Game
                 soundVolume: true,
                 musicVolume: true,
                 voVolume: true,
+                captionsMuted: true,
             }
         });
 
