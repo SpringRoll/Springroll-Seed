@@ -15,6 +15,8 @@ export class Game
         {
             features:
             {
+                sfx: true,
+                sound: true,
                 sfxVolume: true,
                 soundVolume: true,
             }
