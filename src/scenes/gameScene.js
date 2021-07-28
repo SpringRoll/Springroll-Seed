@@ -1,4 +1,5 @@
 import { Ball } from '../gameobjects/ball';
+import * as PIXI from 'pixi.js';
 
 export class GameScene extends PIXI.Container
 {
@@ -11,12 +12,12 @@ export class GameScene extends PIXI.Container
     preload()
     {
         // add assets, and load them. Resolve a promise when it's all done
-        PIXI.loader.add('ball', './assets/ball.png');
-        PIXI.loader.add('bounce', './assets/bounce.{ogg, mp3}');
+        PIXI.Loader.shared.add('ball', './assets/ball.png');
+        PIXI.Loader.shared.add('bounce', './assets/bounce.{ogg, mp3}');
 
         const loadComplete = new Promise((resolve, reject) =>
         {
-            PIXI.loader.load(resolve);
+            PIXI.Loader.shared.load(resolve);
         });
 
         return loadComplete;
@@ -24,7 +25,7 @@ export class GameScene extends PIXI.Container
 
     start()
     {
-        const texture = PIXI.loader.resources['testBG'].texture;
+        const texture = PIXI.Loader.shared.resources['testBG'].texture;
         const scalerBackground = new PIXI.Sprite(texture);
         this.addChild(scalerBackground);
 

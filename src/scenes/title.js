@@ -1,5 +1,6 @@
 import { Anchor } from 'springroll';
 import { GameScene } from './gameScene';
+import * as PIXI from 'pixi.js';
 
 export class TitleScene extends PIXI.Container
 {
@@ -11,11 +12,11 @@ export class TitleScene extends PIXI.Container
 
     preload()
     {
-        PIXI.loader.add('testBG', './assets/BG1320x780-2.png');
+        PIXI.Loader.shared.add('testBG', './assets/BG1320x780-2.png');
 
         const loadComplete = new Promise((resolve, reject) =>
         {
-            PIXI.loader.load(resolve);
+            PIXI.Loader.shared.load(resolve);
         });
 
         return loadComplete;
@@ -24,7 +25,7 @@ export class TitleScene extends PIXI.Container
     start()
     {
 
-        const texture = PIXI.loader.resources['testBG'].texture;
+        const texture = PIXI.Loader.shared.resources['testBG'].texture;
         const scalerBackground = new PIXI.Sprite(texture);
         this.addChild(scalerBackground);
 

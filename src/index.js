@@ -1,6 +1,6 @@
 import './styles.css';
-import 'pixi.js'
-import 'pixi-sound';
+import * as PIXI from 'pixi.js';
+import { sound } from '@pixi/sound';
 import { Game } from './game';
 import { GAMEPLAY } from './constants';
 

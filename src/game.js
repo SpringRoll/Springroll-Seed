@@ -2,6 +2,8 @@ import { GAMEPLAY } from './constants';
 
 import { TitleScene } from './scenes/title';
 import { Property, SafeScaleManager, Application } from 'springroll';
+import * as PIXI from 'pixi.js';
+import { sound } from '@pixi/sound';
 
 export class Game
 {
@@ -11,9 +13,19 @@ export class Game
         this.height = height;
         this.app = new Application(
         {
+            // This feature list matches the Springroll states subscribed to below
+            // Note: features will only work if the Container environment also supports controls for that feature.
             features:
             {
-                sfx: true
+                sfx: true,
+                sound: true,
+                music: true,
+                vo: true,
+                sfxVolume: true,
+                soundVolume: true,
+                musicVolume: true,
+                voVolume: true,
+                captionsMuted: true,
             }
         });
 
@@ -31,27 +43,27 @@ export class Game
 
         this.app.state.soundVolume.subscribe((value) =>
         {
-            PIXI.sound.volumeAll = value;
+            sound.volumeAll = value;
         });
 
         this.app.state.sfxVolume.subscribe((value) =>
         {
             // this will break if done before sounds are loaded.
             // in a full game this should be handled gracefully.
-            PIXI.loader.resources['bounce'].sound.volume = value;
+            PIXI.Loader.shared.resources['bounce'].sound.volume = value;
         });
-        
-        this.app.state.musicVolume.subscribe(result => 
+
+        this.app.state.musicVolume.subscribe(result =>
         {
             console.log('musicVolume: ', result);
         });
-        
-        this.app.state.voVolume.subscribe(result => 
+
+        this.app.state.voVolume.subscribe(result =>
         {
             console.log('voVolume: ', result);
         });
-        
-        this.app.state.captionsMuted.subscribe(result => 
+
+        this.app.state.captionsMuted.subscribe(result =>
         {
             console.log('captionsMuted: ', result);
         });
@@ -59,13 +71,13 @@ export class Game
         // add a extra state property for storying the current scene. Whenever the scene is changed, this class
         // will swap out the container attached to the stage
         this.app.state.scene = new Property(null);
-        this.app.state.scene.subscribe(this.onChangeScene.bind(this));        
+        this.app.state.scene.subscribe(this.onChangeScene.bind(this));
 
         // wait for the app to be ready, then set the new scene
         this.app.state.ready.subscribe(() =>
         {
             this.app.state.scene.value = new TitleScene(this);
-            
+
         });
 
     }
@@ -93,7 +105,7 @@ export class Game
 
     update(deltaTime)
     {
-        // if the game is paused, or there isn't a scene, we can skip rendering/updates  
+        // if the game is paused, or there isn't a scene, we can skip rendering/updates
         if (this.isPaused || this.app.state.scene.value === null)
         {
             return;
@@ -112,6 +124,6 @@ export class Game
         const renderer = this.pixi.renderer;
 
         renderer.view.style.width = `${GAMEPLAY.WIDTH * scaleRatio}px`;
-        renderer.view.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`; 
+        renderer.view.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`;
     }
 }
