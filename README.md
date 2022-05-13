@@ -71,3 +71,12 @@ To start using it, just run `npm start` and it will be available at `127.0.0.1:8
 ## Templates
 
 Using `html.config.js`, we can modify params or swap out templates based on the needs of the project without affecting the rest of the project. `html.config.js` contains comments on all available options.
+
+## Sound Fix
+
+The PBS Games App is created using Cordova. In addition to this there is a util called convertLocalURL which uses the Ionic.WebView.convertFileSrc function to convert the URL from a 'file://' protocol to 'cordova://'. This causes an issue with audio on iOS devices as audio files return file not found.
+
+To solve the problem we have implemented the following into the Ari's Wonderful Ideas Game:
+Embedded Phaser 3.55.2 (latest release version at the time of writing) into the games lib folder. Implemented fix #5725 (due for release in Phaser 3.6.0) - [Link to Pull Request with fix](https://github.com/photonstorm/phaser/pull/5725)
+
+Edit the Phaser files as shown in this commit to accommodate the ‘cordova://’ url prefix - [Link to commit](https://github.com/pbs/elinor-wonders-why-aris-wonderful-ideas/commit/362061cf7c1c5fcf11803209cee6162f1e36495b)
