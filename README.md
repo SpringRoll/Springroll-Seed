@@ -72,7 +72,7 @@ To start using it, just run `npm start` and it will be available at `127.0.0.1:8
 
 Using `html.config.js`, we can modify params or swap out templates based on the needs of the project without affecting the rest of the project. `html.config.js` contains comments on all available options.
 
-## Sound Fix
+## Phaser Sound Fix
 
 The PBS Games App is created using Cordova. In addition to this there is a util called convertLocalURL which uses the `Ionic.WebView.convertFileSrc` function to convert the URL from a `file://` protocol to `cordova://`. This causes an issue with audio on iOS devices as audio files return file not found.
 
