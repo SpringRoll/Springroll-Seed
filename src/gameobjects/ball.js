@@ -18,7 +18,7 @@ export class Ball extends Phaser.GameObjects.Sprite
         const sfxState =  springrollGame.application.state.sfxVolume;
 
         sfxState.subscribe(this.sfxChangeBound);
-        this.hitSound.volume = sfxState.value;
+        this.onSFXVolumeChange(sfxState.value);
     }
 
     preUpdate(time, delta)
@@ -45,6 +45,8 @@ export class Ball extends Phaser.GameObjects.Sprite
 
     onSFXVolumeChange(current)
     {
-        this.hitSound.volume = current;
+        if (isFinite(current)) {
+            this.hitSound.volume = current;
+        }
     }
 }
