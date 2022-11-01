@@ -74,9 +74,4 @@ Using `html.config.js`, we can modify params or swap out templates based on the 
 
 ## Phaser Sound Fix
 
-The PBS Games App is created using Cordova. In addition to this there is a util called convertLocalURL which uses the `Ionic.WebView.convertFileSrc` function to convert the URL from a `file://` protocol to `cordova://`. This causes an issue with audio on iOS devices as audio files return file not found.
-
-To solve the problem we have implemented the following into the Ari's Wonderful Ideas Game:
-Embedded Phaser 3.55.2 (latest release version at the time of writing) into the games lib folder. Implemented fix #5725 (due for release in Phaser 3.6.0) - [Link to Pull Request with fix](https://github.com/photonstorm/phaser/pull/5725)
-
-Edit the Phaser files as shown in this commit to accommodate the `cordova://` url prefix - [Link to commit](https://github.com/pbs/elinor-wonders-why-aris-wonderful-ideas/commit/362061cf7c1c5fcf11803209cee6162f1e36495b)
+This branch is using a forked version of Phaser 3.55.2.  It implements support for the `cordova://` url prefix. This resolves iOS audio playback issues in the PBS Games App.
