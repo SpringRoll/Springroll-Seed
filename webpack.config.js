@@ -74,7 +74,7 @@ module.exports = env => {
             {
               loader: 'file-loader',
               options: {
-                outputPath: path.join(deploy + 'assets/image')
+                outputPath: './assets/image'
               }
             }
           ]
