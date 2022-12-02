@@ -27,7 +27,7 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.3.1"
+    "webpack-dev-server": "^3.11.3"
   },
   "dependencies": {
     "phaser": "git+ssh://git@github.com:pbs/phaser.git#bugfix/182892591-cordova-file-retrieval-bug-latest-version",
