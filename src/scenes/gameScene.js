@@ -15,7 +15,7 @@ export class GameScene extends PIXI.Container
         PIXI.Loader.shared.add('ball', './assets/ball.png');
         PIXI.Loader.shared.add('bounce', './assets/bounce.{ogg, mp3}');
 
-        const loadComplete = new Promise((resolve, reject) =>
+        const loadComplete = new Promise((resolve) =>
         {
             PIXI.Loader.shared.load(resolve);
         });

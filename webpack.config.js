@@ -15,7 +15,11 @@ module.exports = () => {
     new CleanPlugin.CleanWebpackPlugin(),
     new HtmlWebpackPlugin(HtmlConfig),
     new MiniCssExtractPlugin({ filename: 'css/game.style.css' }),
-    new CopyPlugin([{ from: path.join(__dirname + '/static'), to: deploy }]),
+    new CopyPlugin({
+      patterns: [
+        { from: path.join(__dirname + '/static'), to: deploy }
+      ]
+    }),
     new ESLintPlugin()
   ];
 
@@ -75,7 +79,7 @@ module.exports = () => {
         {
           test: /\.js$/,
           exclude: /(node_modules|bower_components)/,
-          use: ['babel-loader', 'eslint-loader']
+          use: ['babel-loader']
         },
         {
           test: /\.(otf|woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

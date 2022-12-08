@@ -14,7 +14,7 @@ export class TitleScene extends PIXI.Container
     {
         PIXI.Loader.shared.add('testBG', './assets/BG1320x780-2.png');
 
-        const loadComplete = new Promise((resolve, reject) =>
+        const loadComplete = new Promise((resolve) =>
         {
             PIXI.Loader.shared.load(resolve);
         });
@@ -29,7 +29,7 @@ export class TitleScene extends PIXI.Container
         const scalerBackground = new PIXI.Sprite(texture);
         this.addChild(scalerBackground);
 
-        //* a clickable label to cause a scene change
+        // a clickable label to cause a scene change
         const text = new PIXI.Text('Click me!',
         {
             fill: 0xffffff
@@ -53,10 +53,9 @@ export class TitleScene extends PIXI.Container
         }));
 
         this.addChild(text);
-        //*/
     }
 
-    update(deltaTime)
+    update()
     {
         // nothing to do
     }
