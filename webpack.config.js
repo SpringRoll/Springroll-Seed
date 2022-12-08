@@ -9,7 +9,9 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const deploy = path.join(__dirname, 'deploy');
 const isProduction = process.env.NODE_ENV == "production";
 
-module.exports = () => {
+// keep the env param to be explicit, eslint disable should be removed when template is in use
+// eslint-disable-next-line no-unused-vars
+module.exports = (env) => {
   const plugins = [
     new CleanPlugin.CleanWebpackPlugin(),
     new HtmlWebpackPlugin(HtmlConfig),
