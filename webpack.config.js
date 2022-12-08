@@ -5,7 +5,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
 const CleanPlugin = require('clean-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
-const os = require('os');
 
 const deploy = path.join(__dirname, 'deploy');
 const isProduction = process.env.NODE_ENV == "production";
