@@ -13,24 +13,14 @@ export class TitleScene extends PIXI.Container
 
     async preload()
     {
-        // PIXI.Loader.shared.add('testBG', './assets/BG1320x780-2.png');
         PIXI.Assets.add('testBG', './assets/BG1320x780-2.png');
 
         this.backgroundTexture = await Assets.load('testBG');
-
-        // const loadComplete = new Promise((resolve) =>
-        // {
-        //     PIXI.Loader.shared.load(resolve);
-        // });
-
-        // return loadComplete;
     }
 
     start()
     {
 
-        // const texture = PIXI.Loader.shared.resources['testBG'].texture;
-        // const texture = this.background.texture;
         console.log(this.backgroundTexture);
         const scalerBackground = PIXI.Sprite.from(this.backgroundTexture);
         this.addChild(scalerBackground);
