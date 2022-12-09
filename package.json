@@ -13,7 +13,6 @@
   "devDependencies": {
     "@babel/core": "^7.20.2",
     "@babel/preset-env": "^7.20.2",
-    "@webpack-cli/generators": "^3.0.1",
     "babel-loader": "^9.1.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
@@ -30,7 +29,7 @@
   },
   "dependencies": {
     "@pixi/sound": "^5.0.0",
-    "pixi.js": "^6.0.4",
+    "pixi.js": "^7.0.4",
     "springroll": "^2.4.4"
   }
 }

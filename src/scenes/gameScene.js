@@ -9,23 +9,27 @@ export class GameScene extends PIXI.Container
         this.game = game;
     }
 
-    preload()
+    async preload()
     {
         // add assets, and load them. Resolve a promise when it's all done
-        PIXI.Loader.shared.add('ball', './assets/ball.png');
-        PIXI.Loader.shared.add('bounce', './assets/bounce.{ogg, mp3}');
+        // PIXI.Loader.shared.add('ball', './assets/ball.png');
+        // PIXI.Loader.shared.add('bounce', './assets/bounce.{ogg, mp3}');
+        PIXI.Assets.add('ball', './assets/ball.png');
+        PIXI.Assets.add('bounce', './assets/bounce.mp3');
 
-        const loadComplete = new Promise((resolve) =>
-        {
-            PIXI.Loader.shared.load(resolve);
-        });
+        // const loadComplete = new Promise((resolve) =>
+        // {
+        //     PIXI.Loader.shared.load(resolve);
+        // });
 
-        return loadComplete;
+        // return loadComplete;
+
+        await PIXI.Assets.load(['ball', 'bounce']);
     }
 
     start()
     {
-        const texture = PIXI.Loader.shared.resources['testBG'].texture;
+        const texture = PIXI.Assets.get('testBG');
         const scalerBackground = new PIXI.Sprite(texture);
         this.addChild(scalerBackground);
 

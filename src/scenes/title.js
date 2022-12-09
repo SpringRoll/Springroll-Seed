@@ -1,6 +1,7 @@
 import { Anchor } from 'springroll';
 import { GameScene } from './gameScene';
 import * as PIXI from 'pixi.js';
+import { Assets } from 'pixi.js';
 
 export class TitleScene extends PIXI.Container
 {
@@ -10,23 +11,28 @@ export class TitleScene extends PIXI.Container
         this.game = game;
     }
 
-    preload()
+    async preload()
     {
-        PIXI.Loader.shared.add('testBG', './assets/BG1320x780-2.png');
+        // PIXI.Loader.shared.add('testBG', './assets/BG1320x780-2.png');
+        PIXI.Assets.add('testBG', './assets/BG1320x780-2.png');
 
-        const loadComplete = new Promise((resolve) =>
-        {
-            PIXI.Loader.shared.load(resolve);
-        });
+        this.backgroundTexture = await Assets.load('testBG');
 
-        return loadComplete;
+        // const loadComplete = new Promise((resolve) =>
+        // {
+        //     PIXI.Loader.shared.load(resolve);
+        // });
+
+        // return loadComplete;
     }
 
     start()
     {
 
-        const texture = PIXI.Loader.shared.resources['testBG'].texture;
-        const scalerBackground = new PIXI.Sprite(texture);
+        // const texture = PIXI.Loader.shared.resources['testBG'].texture;
+        // const texture = this.background.texture;
+        console.log(this.backgroundTexture);
+        const scalerBackground = PIXI.Sprite.from(this.backgroundTexture);
         this.addChild(scalerBackground);
 
         // a clickable label to cause a scene change
