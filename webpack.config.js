@@ -61,7 +61,6 @@ module.exports = () => {
 
     context: path.resolve(__dirname, 'src'),
 
-    // entry: ['@babel/polyfill', path.join(__dirname, '/src/index.js')],
     entry: path.join(__dirname, '/src/index.js'),
     output: {
       filename: 'js/game.bundle.js',
