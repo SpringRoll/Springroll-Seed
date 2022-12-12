@@ -20,8 +20,6 @@ export class TitleScene extends PIXI.Container
 
     start()
     {
-
-        console.log(this.backgroundTexture);
         const scalerBackground = PIXI.Sprite.from(this.backgroundTexture);
         this.addChild(scalerBackground);
 
