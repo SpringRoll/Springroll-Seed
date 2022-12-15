@@ -54,11 +54,23 @@ module.exports = (env) => {
       rules: [
         {
           test: /node_modules[/\\]createjs/,
-          loaders: [
-            'imports-loader?this=>window',
-            'exports-loader?window.createjs'
-          ]
-        },
+          use: [{
+              loader: 'exports-loader',
+              options: {
+                  type: 'commonjs',
+                  exports: 'single window.createjs',
+              },
+          }],
+      },
+      {
+          test: /node_modules[/\\]createjs/,
+          use: [{
+              loader: 'imports-loader',
+              options: {
+                  wrapper: 'window',
+              },
+          }],
+      },
         {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader']
