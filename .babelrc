@@ -7,7 +7,9 @@
           "android": 4,
           "ios": 8,
           "ie": 11
-        }
+        },
+        "useBuiltIns": "entry",
+        "corejs": 3
       }
     ]
   ]
