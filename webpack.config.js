@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlConfig = require(path.join(__dirname, 'html.config'));
 const CleanPlugin = require('clean-webpack-plugin');
-const UglifyJsPlugin  = require('uglifyjs-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const deploy = path.join(__dirname, 'deploy');
 const isProduction = process.env.NODE_ENV == "production";
@@ -47,10 +47,8 @@ module.exports = (env) => {
     },
 
     optimization: {
-      minimizer: [new UglifyJsPlugin({
-        uglifyOptions: {
-          output: { comments: false }
-        }
+      minimizer: [new TerserPlugin({
+        extractComments: true
       })]
     },
 

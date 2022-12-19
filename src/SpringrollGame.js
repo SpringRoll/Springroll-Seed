@@ -2,6 +2,7 @@ import { Application, SafeScaleManager } from "springroll";
 import { GAMEPLAY, SCENE } from "./constants";
 import { TitleScene, GameScene } from "./scenes";
 import { FactoryPlugin } from "./plugins";
+import Phaser from 'phaser';
 
 class SpringrollGame {
     constructor() {
@@ -14,7 +15,7 @@ class SpringrollGame {
         });
 
         // Instance of a Springroll.SafeScaleManager.
-        // This will be initialized after the Phaser.Game is booted.
+        // This will be initialized after the Phaser.Game is ready.
         this.safeScale = undefined;
 
         // Instance of a Phaser.Game.
@@ -54,8 +55,8 @@ class SpringrollGame {
                 }
             });
 
-            // Listen for when the game is booted.
-            this.game.events.once("boot", () => {
+            // Listen for when the game is ready.
+            this.game.events.once("ready", () => {
                 // Create a Springroll.SafeScaleManager.
                 this.safeScale = new SafeScaleManager({
                     width: GAMEPLAY.WIDTH,
@@ -64,7 +65,7 @@ class SpringrollGame {
                     safeHeight: GAMEPLAY.SAFE_HEIGHT,
                     callback: this.onWindowResize.bind(this)
                 });
-            })
+            });
 
             // Add game scenes.
             this.game.scene.add(SCENE.GAME, GameScene);
@@ -72,7 +73,7 @@ class SpringrollGame {
         }
     }
 
-    onApplicationPause(value, oldValue) {
+    onApplicationPause(value) {
         if(value) {
             this.game.scene.pause(SCENE.GAME);
         }
@@ -81,7 +82,7 @@ class SpringrollGame {
         }
     }
 
-    onMasterVolumeChange(value, oldValue) {
+    onMasterVolumeChange(value) {
         this.game.sound.volume = value;
     }
 

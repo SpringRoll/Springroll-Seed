@@ -21,13 +21,13 @@
     "eslint-webpack-plugin": "^3.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
-    "style-loader": "^3.3.1",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.11.1",
     "source-map-loader": "^1.0.0",
     "springroll": "^2.4.4",
-    "uglifyjs-webpack-plugin": "^2.2.0"
+    "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
     "phaser": "git+ssh://git@github.com:pbs/phaser.git#bugfix/182892591-cordova-file-retrieval-bug-latest-version",
