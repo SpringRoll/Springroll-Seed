@@ -50,7 +50,7 @@ export class Game
         {
             // this will break if done before sounds are loaded.
             // in a full game this should be handled gracefully.
-            PIXI.Loader.shared.resources['bounce'].sound.volume = value;
+            PIXI.Assets.get('bounce').sound.volume = value;
         });
 
         this.app.state.musicVolume.subscribe(result =>

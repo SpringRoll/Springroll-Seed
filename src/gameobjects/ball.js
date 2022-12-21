@@ -5,14 +5,14 @@ export class Ball extends PIXI.Sprite
 {
     constructor({ x = 0, y = 0 } = {})
     {
-        const texture = PIXI.Loader.shared.resources['ball'].texture;
+        const texture = PIXI.Assets.get('ball');
         super(texture);
 
         this.anchor.set(0.5, 0.5);
         this.position.set(x, y);
         this.velocity = new PIXI.Point(0, 0);
 
-        this.hitSound = PIXI.Loader.shared.resources['bounce'].sound;
+        this.hitSound = PIXI.Assets.get('bounce');
     }
 
     update(deltaTime)
