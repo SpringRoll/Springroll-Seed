@@ -1,3 +1,5 @@
+import createjs from 'createjs';
+
 class Cache
 {
     constructor()

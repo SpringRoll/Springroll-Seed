@@ -1,6 +1,7 @@
 import { Scene } from "./scene";
 import { Ball } from "../gameobjects/ball";
 import { GameCache } from "../cache";
+import createjs from 'createjs';
 
 export class GameScene extends Scene
 {
@@ -20,7 +21,7 @@ export class GameScene extends Scene
 
         queue.on('fileload', (event) => GameCache.onLoad(event));
 
-        const loadComplete = new Promise((resolve, reject) =>
+        const loadComplete = new Promise((resolve) =>
         {
             queue.on("complete", resolve);
         });

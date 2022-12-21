@@ -1,6 +1,7 @@
 import { GameScene } from './gameScene';
 import { Scene } from './scene';
 import { Anchor } from 'springroll';
+import createjs from 'createjs';
 
 export class TitleScene extends Scene
 {

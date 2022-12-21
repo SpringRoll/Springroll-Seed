@@ -18,7 +18,7 @@ export class Scene extends createjs.Container
     {
     }
 
-    update(deltaTime)
+    update()
     {
     }
 

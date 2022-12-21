@@ -1,6 +1,7 @@
 import { TitleScene } from './scenes/title';
 import { Property, SafeScaleManager, Application } from 'springroll';
 import { GAMEPLAY } from './constants';
+import createjs from 'createjs';
 
 export class Game
 {

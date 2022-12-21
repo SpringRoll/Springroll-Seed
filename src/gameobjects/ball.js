@@ -1,5 +1,6 @@
 import { GAMEPLAY } from './../constants';
 import { GameCache } from '../cache';
+import createjs from 'createjs';
 
 export class Ball extends createjs.Bitmap
 {
