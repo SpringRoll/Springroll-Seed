@@ -1,6 +1,7 @@
 import { GAMEPLAY } from '../constants';
+import { Scene } from 'phaser';
 
-export class GameScene extends Phaser.Scene
+export class GameScene extends Scene
 {
     preload()
     {

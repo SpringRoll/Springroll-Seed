@@ -1,7 +1,7 @@
-import Phaser from 'phaser';
+import { Plugins } from 'phaser';
 import { Ball } from '../gameobjects';
 
-export class FactoryPlugin extends Phaser.Plugins.BasePlugin
+export class FactoryPlugin extends Plugins.BasePlugin
 {
     constructor(pluginManager)
     {

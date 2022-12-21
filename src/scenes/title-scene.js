@@ -41,7 +41,7 @@ export class TitleScene extends Phaser.Scene
         springrollGame.safeScale.addEntity(this.textAnchor);
     }
 
-    startText_onPointerDown(pointer)
+    startText_onPointerDown()
     {
         this.scene.start(SCENE.GAME);
     }

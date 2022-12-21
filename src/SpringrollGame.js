@@ -2,20 +2,17 @@ import { Application, SafeScaleManager } from "springroll";
 import { GAMEPLAY, SCENE } from "./constants";
 import { TitleScene, GameScene } from "./scenes";
 import { FactoryPlugin } from "./plugins";
+import Phaser from 'phaser';
 
 class SpringrollGame {
     constructor() {
         // Instance of a Springroll.Application.
         // Flag any additional features. See https://github.com/SpringRoll/SpringRoll/tree/master/src
-        this.application = new Application({ 
-            features: { 
-                sfx: true 
-            } 
+        this.application = new Application({
+            features: {
+                sfx: true
+            }
         });
-
-        // Instance of a Springroll.SafeScaleManager.
-        // This will be initialized after the Phaser.Game is booted.
-        this.safeScale = undefined;
 
         // Instance of a Phaser.Game.
         // This will be initialized when the application is ready.
@@ -39,7 +36,7 @@ class SpringrollGame {
             this.application.state.captionsMuted.subscribe(result => {
                 console.log('captionsMuted: ', result);
             });
-            
+
             // Create a Phaser.Game.
             this.game = new Phaser.Game({
                 type: Phaser.AUTO,
@@ -50,21 +47,18 @@ class SpringrollGame {
                 plugins: {
                     // FactoryPlugin is not necessary for Springroll, however it demonstrates
                     // how to setup and install a Phaser.Plugin.
-                    global: [ { key: "FactoryPlugin", plugin: FactoryPlugin, start: true } ]
+                    global: [{ key: "FactoryPlugin", plugin: FactoryPlugin, start: true }]
                 }
             });
 
-            // Listen for when the game is booted.
-            this.game.events.once("boot", () => {
-                // Create a Springroll.SafeScaleManager.
-                this.safeScale = new SafeScaleManager({
-                    width: GAMEPLAY.WIDTH,
-                    height: GAMEPLAY.HEIGHT,
-                    safeWidth: GAMEPLAY.SAFE_WIDTH,
-                    safeHeight: GAMEPLAY.SAFE_HEIGHT,
-                    callback: this.onWindowResize.bind(this)
-                });
-            })
+            // Create a Springroll.SafeScaleManager.
+            this.safeScale = new SafeScaleManager({
+                width: GAMEPLAY.WIDTH,
+                height: GAMEPLAY.HEIGHT,
+                safeWidth: GAMEPLAY.SAFE_WIDTH,
+                safeHeight: GAMEPLAY.SAFE_HEIGHT,
+                callback: this.onWindowResize.bind(this)
+            });
 
             // Add game scenes.
             this.game.scene.add(SCENE.GAME, GameScene);
@@ -72,8 +66,8 @@ class SpringrollGame {
         }
     }
 
-    onApplicationPause(value, oldValue) {
-        if(value) {
+    onApplicationPause(value) {
+        if (value) {
             this.game.scene.pause(SCENE.GAME);
         }
         else {
@@ -81,7 +75,7 @@ class SpringrollGame {
         }
     }
 
-    onMasterVolumeChange(value, oldValue) {
+    onMasterVolumeChange(value) {
         this.game.sound.volume = value;
     }
 
