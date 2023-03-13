@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added .nvmrc file to set the project target node version
 - All seed templates now target node 18.15.0
+- Added `<meta name="robots" content="noindex">` to all template html files to prevent Google indexing
 
 ## [1.2.0] - 2022-12-12
 
