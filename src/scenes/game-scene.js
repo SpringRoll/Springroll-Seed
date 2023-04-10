@@ -6,7 +6,7 @@ export class GameScene extends Scene
     preload()
     {
         // load assets
-        this.load.image('ball', './assets/ball.png')
+        this.load.image('ball', './assets/Ball.png')
         this.load.audio('bounce', ['./assets/bounce.mp3', './assets/bounce.ogg']);
     }
 
