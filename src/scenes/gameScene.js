@@ -11,7 +11,7 @@ export class GameScene extends PIXI.Container
 
     async preload()
     {
-        PIXI.Assets.add('ball', './assets/ball.png');
+        PIXI.Assets.add('ball', './assets/Ball.png');
         PIXI.Assets.add('bounce', './assets/bounce.mp3');
 
         await PIXI.Assets.load(['ball', 'bounce']);
