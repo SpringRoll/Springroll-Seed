@@ -11,8 +11,8 @@ export class GameScene extends PIXI.Container
 
     async preload()
     {
-        PIXI.Assets.add('ball', './assets/Ball.png');
-        PIXI.Assets.add('bounce', './assets/bounce.mp3');
+        PIXI.Assets.add({alias: 'ball', src: './assets/Ball.png'});
+        PIXI.Assets.add({alias: 'bounce', src: './assets/bounce.mp3'});
 
         await PIXI.Assets.load(['ball', 'bounce']);
     }
@@ -31,10 +31,10 @@ export class GameScene extends PIXI.Container
         this.addChild(this.ball2);
     }
 
-    update(deltaTime)
+    update(ticker)
     {
         // bounce the balls
-        this.ball.update(deltaTime);
-        this.ball2.update(deltaTime);
+        this.ball.update(ticker);
+        this.ball2.update(ticker);
     }
 }
