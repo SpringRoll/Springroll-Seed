@@ -17,6 +17,10 @@ class SpringrollGame {
                 // FactoryPlugin is not necessary for Springroll, however it demonstrates
                 // how to setup and install a Phaser.Plugin.
                 global: [{ key: "FactoryPlugin", plugin: FactoryPlugin, start: true }]
+            },
+            loader: {
+                // This allows Phaser to load assets from the local file system when running in Cordova
+                localScheme: ['file://', 'capacitor://', 'cordova://', 'ionic://'],
             }
         });
 
