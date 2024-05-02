@@ -26,11 +26,11 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",
     "source-map-loader": "^4.0.1",
-    "springroll": "^2.4.4"
+    "springroll": "^2.6.0"
   },
   "dependencies": {
     "@pixi/sound": "^6.0.0",
     "pixi.js": "^8.1.0",
-    "springroll": "^2.4.4"
+    "springroll": "^2.6.0"
   }
 }
