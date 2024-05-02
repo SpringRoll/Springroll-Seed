@@ -37,7 +37,7 @@ export class TitleScene extends PIXI.Container
         {
             // when the label is clicked, preload the game scene and then tell the app to switch scenes
             const nextScene = new GameScene(this.game);
-            this.game.app.state.scene.value = nextScene;
+            this.game.application.state.scene.value = nextScene;
         });
 
         this.game.scaleManager.addEntity(new Anchor(
