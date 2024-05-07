@@ -30,7 +30,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
-    "phaser": "git+ssh://git@github.com:pbs/phaser.git#bugfix/182892591-cordova-file-retrieval-bug-latest-version",
+    "phaser": "^3.80.1",
     "springroll": "^2.4.4"
   }
 }
