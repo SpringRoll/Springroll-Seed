@@ -42,29 +42,44 @@ class SpringrollGame {
         // Flag any additional features. See https://github.com/SpringRoll/SpringRoll/tree/master/src
         this.application = new Application({
             features: {
-                pause: true,
-                soundVolume:true,
-                musicVolume: true,
+                captions: true,
+                sound: true,
+                soundVolume: true,
+                vo: true,
                 voVolume: true,
+                music: true,
+                musicVolume: true,
+                sfx: true,
+                sfxVolume: true,
             }
         });
 
         // Listen for container events from the application.
+        this.application.state.ready.subscribe(this.onApplicationReady.bind(this));
         this.application.state.pause.subscribe(this.onApplicationPause.bind(this));
-        this.application.state.soundVolume.subscribe(this.onMasterVolumeChange.bind(this));
-        this.application.state.musicVolume.subscribe(result => {
-            console.log('musicVolume: ', result);
-        });
-        this.application.state.voVolume.subscribe(result => {
-            console.log('voVolume: ', result);
-        });
+
         this.application.state.captionsMuted.subscribe(result => {
             console.log('captionsMuted: ', result);
         });
+        this.application.state.soundVolume.subscribe(this.onMainVolumeChange.bind(this));
+        this.application.state.voVolume.subscribe(result => {
+            console.log('voVolume: ', result);
+        });
+        this.application.state.musicVolume.subscribe(result => {
+            console.log('musicVolume: ', result);
+        });
+        this.application.state.sfxVolume.subscribe(result => {
+            console.log('sfxVolume: ', result);
+        });
     }
 
-    onApplicationPause(value) {
-        if (value) {
+    onApplicationReady() {
+        console.log('The app is ready. All plugins have finished their setup and preload calls');
+    }
+
+    onApplicationPause(isPaused) {
+        console.log('Is the game paused?', isPaused);
+        if (isPaused) {
             this.game.scene.pause(SCENE.GAME);
         }
         else {
@@ -72,7 +87,7 @@ class SpringrollGame {
         }
     }
 
-    onMasterVolumeChange(value) {
+    onMainVolumeChange(value) {
         this.game.sound.volume = value;
     }
 
