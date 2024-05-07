@@ -9,77 +9,90 @@ export class Game
 {
     constructor(width, height)
     {
+        this.emitter = new PIXI.EventEmitter();
         this.width = width;
         this.height = height;
-        this.app = new Application(
-        {
-            // This feature list matches the Springroll states subscribed to below
-            // Note: features will only work if the Container environment also supports controls for that feature.
-            features:
+        
+        this.pixi = new PIXI.Application();
+        (async () => {
+            await this.pixi.init({
+                width,
+                height,
+                autoResize: true
+            });
+
+            document.getElementById('content').appendChild(this.pixi.canvas);
+            
+            this.app = new Application(
+                {
+                    // This feature list matches the Springroll states subscribed to below
+                    // Note: features will only work if the Container environment also supports controls for that feature.
+                    features:
+                    {
+                        sfx: true,
+                        sound: true,
+                        music: true,
+                        vo: true,
+                        sfxVolume: true,
+                        soundVolume: true,
+                        musicVolume: true,
+                        voVolume: true,
+                        captionsMuted: true,
+                    }
+                });
+
+            this.resize = this.resize.bind(this);
+            this.scaleManager = new SafeScaleManager({width, height, safeWidth: 1024, safeHeight: 660, callback: this.resize});
+    
+            // Subscribe to required springroll States.
+            this.app.state.pause.subscribe((value) =>
             {
-                sfx: true,
-                sound: true,
-                music: true,
-                vo: true,
-                sfxVolume: true,
-                soundVolume: true,
-                musicVolume: true,
-                voVolume: true,
-                captionsMuted: true,
-            }
-        });
+                this.isPaused = value;
+            });
+    
+            this.app.state.soundVolume.subscribe((value) =>
+            {
+                sound.volumeAll = value;
+            });
+    
+            this.app.state.sfxVolume.subscribe((value) =>
+            {
+                //Check to see if sound exists in the cache before changing its volume
+                if(PIXI.Assets.cache.has('bounce')){
+                    PIXI.Assets.get('bounce').sound.volume = value;
+                }
+                
+            });
+    
+            this.app.state.musicVolume.subscribe(result =>
+            {
+                console.log('musicVolume: ', result);
+            });
+    
+            this.app.state.voVolume.subscribe(result =>
+            {
+                console.log('voVolume: ', result);
+            });
+    
+            this.app.state.captionsMuted.subscribe(result =>
+            {
+                console.log('captionsMuted: ', result);
+            });
+    
+            // add a extra state property for storying the current scene. Whenever the scene is changed, this class
+            // will swap out the container attached to the stage
+            this.app.state.scene = new Property(null);
+            this.app.state.scene.subscribe(this.onChangeScene.bind(this));
+    
+            // wait for the app to be ready, then set the new scene
+            this.app.state.ready.subscribe(() =>
+            {
+                this.app.state.scene.value = new TitleScene(this);
+            });
 
-        this.pixi = new PIXI.Application({ width, height, autoResize: true });
-        document.getElementById('content').appendChild(this.pixi.view);
-
-        this.resize = this.resize.bind(this);
-        this.scaleManager = new SafeScaleManager({width, height, safeWidth: 1024, safeHeight: 660, callback: this.resize});
-
-        // Subscribe to required springroll States.
-        this.app.state.pause.subscribe((value) =>
-        {
-            this.isPaused = value;
-        });
-
-        this.app.state.soundVolume.subscribe((value) =>
-        {
-            sound.volumeAll = value;
-        });
-
-        this.app.state.sfxVolume.subscribe((value) =>
-        {
-            // this will break if done before sounds are loaded.
-            // in a full game this should be handled gracefully.
-            PIXI.Assets.get('bounce').sound.volume = value;
-        });
-
-        this.app.state.musicVolume.subscribe(result =>
-        {
-            console.log('musicVolume: ', result);
-        });
-
-        this.app.state.voVolume.subscribe(result =>
-        {
-            console.log('voVolume: ', result);
-        });
-
-        this.app.state.captionsMuted.subscribe(result =>
-        {
-            console.log('captionsMuted: ', result);
-        });
-
-        // add a extra state property for storying the current scene. Whenever the scene is changed, this class
-        // will swap out the container attached to the stage
-        this.app.state.scene = new Property(null);
-        this.app.state.scene.subscribe(this.onChangeScene.bind(this));
-
-        // wait for the app to be ready, then set the new scene
-        this.app.state.ready.subscribe(() =>
-        {
-            this.app.state.scene.value = new TitleScene(this);
-
-        });
-
+            // Dispatch a ready event after initializing the app
+            this.emitter.emit('ready');
+        })();
     }
 
     run()
@@ -123,7 +136,7 @@ export class Game
         // -- PIXI -- //
         const renderer = this.pixi.renderer;
 
-        renderer.view.style.width = `${GAMEPLAY.WIDTH * scaleRatio}px`;
-        renderer.view.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`;
+        renderer.view.canvas.style.width = `${GAMEPLAY.WIDTH * scaleRatio}px`;
+        renderer.view.canvas.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`;
     }
 }

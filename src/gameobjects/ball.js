@@ -15,11 +15,12 @@ export class Ball extends PIXI.Sprite
         this.hitSound = PIXI.Assets.get('bounce');
     }
 
-    update(deltaTime)
+    update(ticker)
     {
-        this.velocity.y += GAMEPLAY.GRAVITY * deltaTime;
-        this.position.y += this.velocity.y * deltaTime;
-
+        
+        this.velocity.y += GAMEPLAY.GRAVITY * ticker.deltaTime;
+        this.position.y += this.velocity.y * ticker.deltaTime;
+        
         if(this.position.y > 680)
         {
             this.position.y = 679;

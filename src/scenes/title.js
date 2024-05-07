@@ -13,7 +13,7 @@ export class TitleScene extends PIXI.Container
 
     async preload()
     {
-        PIXI.Assets.add('testBG', './assets/BG1320x780-2.png');
+        PIXI.Assets.add({alias: 'testBG', src: './assets/BG1320x780-2.png'});
 
         this.backgroundTexture = await Assets.load('testBG');
     }
@@ -24,9 +24,11 @@ export class TitleScene extends PIXI.Container
         this.addChild(scalerBackground);
 
         // a clickable label to cause a scene change
-        const text = new PIXI.Text('Click me!',
-        {
-            fill: 0xffffff
+        const text = new PIXI.Text({
+            text:'Click me!',
+            style:{
+                fill: 0xffffff
+            }
         });
         text.interactive = true;
         text.anchor.set(0.5, 0.5);
@@ -36,7 +38,6 @@ export class TitleScene extends PIXI.Container
             // when the label is clicked, preload the game scene and then tell the app to switch scenes
             const nextScene = new GameScene(this.game);
             this.game.app.state.scene.value = nextScene;
-
         });
 
         this.game.scaleManager.addEntity(new Anchor(
