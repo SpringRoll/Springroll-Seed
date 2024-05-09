@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2024-05-09
+
+### Changed
+
+- Pixi: Updated pixi.js to 8.1.0
+- Pixi: Updated @pixi/sound to 6.0.0
+- Pixi: Updated SpringRoll to 2.6.0
+- Pixi: Updated feature list and state listeners to follow a standardized set
+
+- Phaser: Updated Phaser to 3.80.1
+- Phaser: Fixed warning with SpringRoll listeners
+- Phaser: Updated SpringRoll to 2.6.0
+- Phaser: Updated feature list and state listeners to follow a standardized set
+
+
 ## [1.3.1] - 2023-03-28
+
+### Fixed
+
+- Removed incorrect references to non-NPM registry in package-lock
 
 ### Changed
 
