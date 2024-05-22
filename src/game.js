@@ -9,11 +9,22 @@ export class Game
     {
         this.width = width;
         this.height = height;
+        this.sfxVolume = 1;
+
         this.app = new Application(
         {
             features:
             {
-                sfx: true
+                captions: true,
+                sound: true,
+                soundVolume: true,
+                vo: true,
+                voVolume: true,
+                music: true,
+                musicVolume: true,
+                sfx: true,
+                sfxVolume: true,
+
             }
         });
 
@@ -28,46 +39,43 @@ export class Game
             callback: this.resize 
         });
 
-        // Subscribe to required springroll States.
+        // Listen for container events from the application.
+        // wait for the app to be ready, then set the new scene
+        this.app.state.ready.subscribe(() =>
+        {
+            this.app.state.scene.value = new TitleScene(this);
+        });
+
         this.app.state.pause.subscribe((value) =>
         {
             this.isPaused = value;
         });
-
+        this.app.state.captionsMuted.subscribe(result => 
+        {
+            console.log('captionsMuted: ', result);
+        });
         this.app.state.soundVolume.subscribe((value) =>
         {
-            // set master volume
+            // set main volume
             createjs.Sound.volume = value;
-        });
-
-        this.sfxVolume = 1;
-        this.app.state.sfxVolume.subscribe((value) =>
-        {
-            this.sfxVolume = value;
-        });
-        this.app.state.musicVolume.subscribe(result => 
-        {
-            console.log('musicVolume: ', result);
         });
         this.app.state.voVolume.subscribe(result => 
         {
             console.log('voVolume: ', result);
         });
-        this.app.state.captionsMuted.subscribe(result => 
+        this.app.state.musicVolume.subscribe(result => 
         {
-            console.log('captionsMuted: ', result);
+            console.log('musicVolume: ', result);
+        });
+        this.app.state.sfxVolume.subscribe((value) =>
+        {
+            this.sfxVolume = value;
         });
 
         // add an extra state property for storying the current scene. Whenever the scene is changed, this class
         // will swap out the container attached to the stage
         this.app.state.scene = new Property(null);
         this.app.state.scene.subscribe(this.onChangeScene.bind(this));
-
-        // wait for the app to be ready, then set the new scene
-        this.app.state.ready.subscribe(() =>
-        {
-            this.app.state.scene.value = new TitleScene(this);
-        });
 
         // Set Ticker
         createjs.Ticker.framerate = 60;
