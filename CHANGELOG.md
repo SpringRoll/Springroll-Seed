@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phaser: Updated SpringRoll to 2.6.0
 - Phaser: Updated feature list and state listeners to follow a standardized set
 
+- CreateJS: Updated SpringRoll to 2.6.0
+- CreateJS: Updated feature list and state listeners to follow a standardized set
+
 
 ## [1.3.1] - 2023-03-28
 
