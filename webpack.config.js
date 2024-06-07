@@ -8,11 +8,10 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const deploy = path.join(__dirname, 'deploy');
-const isProduction = process.env.NODE_ENV == "production";
 
-// keep the env param to be explicit, eslint disable should be removed when template is in use
-// eslint-disable-next-line no-unused-vars
 module.exports = (env) => {
+  const isProduction = !!env.production;
+
   const plugins = [
     new CleanPlugin.CleanWebpackPlugin(),
     new HtmlWebpackPlugin(HtmlConfig),
@@ -120,7 +119,7 @@ module.exports = (env) => {
                       keep_fnames: isProduction ? false : true,
                   },
                   compress: {
-                      drop_console: isProduction ? ['log'] : false,
+                      drop_console: isProduction ? ['log', 'info']: false,
                   },
               },
           }),
