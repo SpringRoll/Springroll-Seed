@@ -27,8 +27,6 @@ module.exports = (env) => {
   return {
     stats: 'errors-only',
 
-    mode: isProduction ? 'production':'development',
-
     devServer: {
       open: true,
       client: { overlay: true },

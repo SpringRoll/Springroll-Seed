@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Pixi: added TerserPlugin options to webpack to drop `console.log` in production builds 
+- added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Pixi: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Phaser: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- CreateJS: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
 
 ## [2.0.0] - 2024-05-09
 
