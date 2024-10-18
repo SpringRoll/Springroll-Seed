@@ -6,7 +6,7 @@ const HtmlConfig = require(path.join(__dirname, 'html.config'));
 const CleanPlugin = require('clean-webpack-plugin');
 const os = require('os');
 const ESLintPlugin = require('eslint-webpack-plugin');
-import TerserPlugin from 'terser-webpack-plugin';
+const TerserPlugin = require('terser-webpack-plugin');
 
 const deploy = path.join(__dirname, 'deploy');
 
