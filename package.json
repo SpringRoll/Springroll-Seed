@@ -22,7 +22,6 @@
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.6.1",
     "source-map-loader": "^4.0.1",
-    "springroll": "^2.8.0",
     "style-loader": "^3.3.1",
     "terser-webpack-plugin": "^5.3.10",
     "webpack": "^5.75.0",
@@ -31,6 +30,7 @@
   },
   "dependencies": {
     "@pixi/sound": "^6.0.1",
-    "pixi.js": "^8.10.2"
+    "pixi.js": "^8.10.2",
+    "springroll": "^2.8.0"
   }
 }
