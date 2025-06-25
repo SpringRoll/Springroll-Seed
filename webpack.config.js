@@ -35,8 +35,6 @@ module.exports = (env) => {
       client: {
         overlay: true,
       },
-
-      // `host` and `port` remain the same.
       host: '0.0.0.0',
       port: 8080,
       static: {
