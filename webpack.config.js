@@ -27,14 +27,20 @@ module.exports = (env) => {
   return {
     stats: 'errors-only',
 
-    mode: isProduction ? 'production':'development',
+    mode: isProduction ? 'production' : 'development',
 
     devServer: {
       open: true,
-      client: { overlay: true },
+
+      client: {
+        overlay: true,
+      },
       host: '0.0.0.0',
       port: 8080,
-      static: path.join(__dirname, '/static')
+      static: {
+        directory: path.join(__dirname, '/static'),
+      },
+      hot: true,
     },
 
     context: path.resolve(__dirname, 'src'),
@@ -55,22 +61,22 @@ module.exports = (env) => {
         {
           test: /node_modules[/\\]createjs/,
           use: [{
-              loader: 'exports-loader',
-              options: {
-                  type: 'commonjs',
-                  exports: 'single window.createjs',
-              },
+            loader: 'exports-loader',
+            options: {
+              type: 'commonjs',
+              exports: 'single window.createjs',
+            },
           }],
-      },
-      {
+        },
+        {
           test: /node_modules[/\\]createjs/,
           use: [{
-              loader: 'imports-loader',
-              options: {
-                  wrapper: 'window',
-              },
+            loader: 'imports-loader',
+            options: {
+              wrapper: 'window',
+            },
           }],
-      },
+        },
         {
           test: /\.css$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader']
@@ -135,17 +141,17 @@ module.exports = (env) => {
     optimization: {
       minimize: true,
       minimizer: [
-          new TerserPlugin({
-              terserOptions: {
-                  mangle: {
-                      keep_fnames: isProduction ? false : true,
-                  },
-                  compress: {
-                      drop_console: isProduction ? ['log', 'info']: false,
-                  },
-              },
-          }),
+        new TerserPlugin({
+          terserOptions: {
+            mangle: {
+              keep_fnames: isProduction ? false : true,
+            },
+            compress: {
+              drop_console: isProduction ? ['log', 'info'] : false,
+            },
+          },
+        }),
       ],
-  }
+    }
   };
 };
