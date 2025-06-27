@@ -31,10 +31,16 @@ module.exports = (env) => {
 
     devServer: {
       open: true,
-      client: { overlay: true },
+
+      client: {
+        overlay: true,
+      },
       host: '0.0.0.0',
       port: 8080,
-      static: path.join(__dirname, '/static')
+      static: {
+        directory: path.join(__dirname, '/static'),
+      },
+      hot: true,
     },
 
     context: path.resolve(__dirname, 'src'),
