@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated webpack-cli to 6.0.1
 - Updated webpack-dev-server to 5.2.2
 - Updated SpringRoll to 2.8.0
+- Updated Phaser to 3.90.0
 
 ## [2.1.0] - 2024-10-28
 
