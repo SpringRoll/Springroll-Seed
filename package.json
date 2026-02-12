@@ -30,6 +30,6 @@
   },
   "dependencies": {
     "phaser": "^3.90.0",
-    "springroll": "^2.8.0"
+    "springroll": "^2.9.0"
   }
 }
