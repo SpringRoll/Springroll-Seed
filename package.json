@@ -32,6 +32,6 @@
   },
   "dependencies": {
     "createjs": "^1.0.1",
-    "springroll": "^2.8.0"
+    "springroll": "^2.9.0"
   }
 }
