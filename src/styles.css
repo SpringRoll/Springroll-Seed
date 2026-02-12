@@ -25,3 +25,27 @@ canvas {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+#captions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  cursor: default;
+  background: rgba(0,0,0,0.4);
+  padding: 1rem;
+}
+#captions p {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+  line-height: 1.5em;
+  text-overflow: ellipsis;
+  width: 40ch;
+  margin: 0 auto;
+}
