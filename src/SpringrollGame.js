@@ -86,7 +86,7 @@ class SpringrollGame {
         */
         this.application.state.playOptions.subscribe(playOptions => 
         {
-            console.log('New playOptions value set to', playOptions, selectedLanguage, LANGUAGES);
+            console.log('New playOptions value set to', playOptions);
 
             this.getLanguage();
         });
