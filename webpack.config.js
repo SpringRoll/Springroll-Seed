@@ -29,17 +29,18 @@ module.exports = (env) => {
   let networkInfo = os.networkInterfaces();
   let ipAddress;
 
-  // Depending on operating system the network interface will be named differntly. Check if each exists to find the correct syntax
-  if (networkInfo.en0){
-    ipAddress = networkInfo.en0[1].address;
-  } else if (networkInfo.en7) {
-    ipAddress = networkInfo.en7[1].address;
-  } else  if (networkInfo['Wi-Fi']){
-    ipAddress = networkInfo['Wi-Fi'][1].address;
-  } else  if (networkInfo['Ethernet']){
-    ipAddress = networkInfo['Ethernet'][1].address;
-  } else  if (networkInfo.eth0){
-    ipAddress = networkInfo.eth0[1].address;
+  // Helper function to find IPv4 address from interface
+  const getIPv4Address = (interfaceArray) => {
+    if (!interfaceArray) return null;
+    const ipv4 = interfaceArray.find(addr => addr.family === 'IPv4' && !addr.internal);
+    return ipv4?.address;
+  };
+
+  // Try common interface names - check each for an IPv4 address
+  const interfaceNames = ['en0', 'en7', 'Wi-Fi', 'Ethernet', 'eth0'];
+  for (const name of interfaceNames) {
+    ipAddress = getIPv4Address(networkInfo[name]);
+    if (ipAddress) break;
   }
   
   if (ipAddress) {
