@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 
 import { SCENE, GAMEPLAY } from "../constants";
 import { Anchor } from 'springroll';
-import { springrollGame } from '../SpringrollGame';
 
 export class TitleScene extends Phaser.Scene
 {
@@ -38,7 +37,8 @@ export class TitleScene extends Phaser.Scene
                 startText.y = y;
             }
         });
-        springrollGame.safeScale.addEntity(this.textAnchor);
+        const safeScale = this.game.registry.get('safeScale');
+        safeScale.addEntity(this.textAnchor);
     }
 
     startText_onPointerDown()

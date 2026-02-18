@@ -4,6 +4,13 @@ import { TitleScene, GameScene } from "./scenes";
 import { FactoryPlugin } from "./plugins";
 import Phaser from 'phaser';
 
+let selectedLanguage;
+
+const LANGUAGES = {
+	ENGLISH: "en",
+	SPANISH: "es",
+};
+
 class SpringrollGame {
     constructor() {
         // Create a Phaser.Game.
@@ -32,6 +39,9 @@ class SpringrollGame {
             safeHeight: GAMEPLAY.SAFE_HEIGHT,
             callback: this.onWindowResize.bind(this)
         });
+
+        // Store safeScale in registry so scenes can access it
+        this.game.registry.set('safeScale', this.safeScale);
 
         // Add game scenes.
         this.game.scene.add(SCENE.GAME, GameScene);
@@ -71,6 +81,21 @@ class SpringrollGame {
         this.application.state.sfxVolume.subscribe(result => {
             console.log('sfxVolume: ', result);
         });
+        /*
+        PlayOptions allows developers to pass values from the container environment to the SpringRoll environment. These values can contain any key value pairs the developer requires. This is typically how language selection is passed from the container to the game.
+        */
+        this.application.state.playOptions.subscribe(playOptions => 
+        {
+            console.log('New playOptions value set to', playOptions);
+
+            this.getLanguage();
+        });
+
+        /*Using a default playOptions value for this demo. In a real container environment, the container would set playOptions and pass it into the game automatically. This is just for demonstration purposes to show how playOptions can be used to pass values from the container to the game.
+        */
+        this.application.state.playOptions.value = {
+            language: LANGUAGES.ENGLISH
+        };
     }
 
     onApplicationReady() {
@@ -94,6 +119,39 @@ class SpringrollGame {
     onWindowResize({ scaleRatio }) {
         this.game.canvas.style.width = `${GAMEPLAY.WIDTH * scaleRatio}px`;
         this.game.canvas.style.height = `${GAMEPLAY.HEIGHT * scaleRatio}px`;
+    }
+
+    getLanguage() {
+        if (selectedLanguage) {
+            return selectedLanguage;
+        }
+
+        // Check for language param in query string first, this allows us to override the language for testing purposes without having to change the app state or reload the page with new play options. Example: ?language=es
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const queryLanguage = urlParams.get("language"); 
+        
+        if (queryLanguage) {
+            selectedLanguage = queryLanguage.toLowerCase();
+            console.log(`Language set to ${selectedLanguage} from query string override!`);
+            return selectedLanguage;
+        }
+
+        const playOptions = this.application.state.playOptions;
+        const playOptionsLanguage = playOptions.value?.language;
+
+        const availableLanguages = [LANGUAGES.ENGLISH, LANGUAGES.SPANISH];
+
+        let language;
+
+        if (playOptionsLanguage && playOptionsLanguage.includes(LANGUAGES.SPANISH) && availableLanguages.includes(LANGUAGES.SPANISH)) {
+            language = LANGUAGES.SPANISH;
+        } else {
+            language = LANGUAGES.ENGLISH;
+        }
+        selectedLanguage = language;
+        console.log(`Language set to ${selectedLanguage} from playOptions`);
+        return selectedLanguage;
     }
 }
 
