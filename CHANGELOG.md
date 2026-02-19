@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.3.0] - 2026-02-18
 
+### Changed
+
 - Updated Node to 24.12.0
-- Included Captions example w/ CSS Styling
-- Updated dependencies 
+- Updated dependencies including SpringRoll Core
 - Updated gitignore to not include .DS_Store files
+
+### Added
+
+- Included Captions example w/ CSS Styling
+- PlayOptions Language setting example
 
 ## [2.2.0] - 2025-06-27
 
