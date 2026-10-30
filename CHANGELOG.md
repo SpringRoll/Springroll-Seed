@@ -14,11 +14,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Bump copy-webpack-plugin to 14.0.0
   - Bump terser-webpack-plugin to 5.4.0
   - Bump serialize-javascript to 7.0.5
-  - Bump qs and express
+  - Bump qs to 6.16.2 and express to 4.22.3
   - Bump lodash to 4.18.1
-  - Bump follow-redirects to 1.16.0
+  - Bump follow-redirects to 1.16.2
   - Bump @babel/plugin-transform-modules-systemjs to 7.29.4
   - Bump fast-uri, flatted, picomatch, and minimatch
+  - Bump postcss to 8.5.32
+  - Bump postcss-selector-parser to 7.1.7
+  - Bump proxy-addr to 2.0.8
+  - Apply `npm audit fix` (ws, websocket-driver, js-yaml, brace-expansion, body-parser, @babel/*, and others)
 
 ## [2.3.0] - 2026-02-19
 
