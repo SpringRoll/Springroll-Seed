@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Bump postcss to 8.5.32
   - Bump postcss-selector-parser to 7.1.7
   - Bump proxy-addr to 2.0.8
+  - Apply `npm audit fix` (ws, websocket-driver, js-yaml, brace-expansion, body-parser, @babel/*, and others)
 
 ## [2.3.0] - 2026-02-19
 
