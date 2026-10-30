@@ -5,7 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.3.0] - 2026-02-18
+## Unreleased
+
+### Changed
+
+- Dependency updates, [ticket](https://pbskids.atlassian.net/browse/SR-248):
+  - Bump webpack-dev-server to 5.2.4
+  - Bump copy-webpack-plugin to 14.0.0
+  - Bump terser-webpack-plugin to 5.4.0
+  - Bump serialize-javascript to 7.0.5
+  - Bump qs to 6.16.2 and express to 4.22.3
+  - Bump lodash to 4.18.1
+  - Bump follow-redirects to 1.16.2
+  - Bump @babel/plugin-transform-modules-systemjs to 7.29.4
+  - Bump fast-uri, flatted, picomatch, and minimatch
+  - Bump postcss to 8.5.32
+  - Bump postcss-selector-parser to 7.1.7
+  - Bump proxy-addr to 2.0.8
+  - Apply `npm audit fix` (ws, websocket-driver, js-yaml, brace-expansion, body-parser, @babel/\*, and others)
+
+## [2.3.0] - 2026-02-19
 
 ### Changed
 
@@ -15,8 +34,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Included Captions example w/ CSS Styling
-- PlayOptions Language setting example
+- Phaser: Included Captions example w/ CSS Styling
+- Phaser: PlayOptions Language setting example
 
 ## [2.2.0] - 2025-06-27
 
@@ -26,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated webpack-cli to 6.0.1
 - Updated webpack-dev-server to 5.2.2
 - Updated SpringRoll to 2.8.0
-- Updated Phaser to 3.90.0
+- Phaser: Updated Phaser to 3.90.0
 
 ## [2.1.0] - 2024-10-28
 
@@ -46,13 +65,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - added TerserPlugin options to webpack to maintain function names in debug builds
 
-- Pixi: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Pixi: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - Pixi: added TerserPlugin options to webpack to maintain function names in debug builds
 
-- Phaser: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Phaser: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - Phaser: added TerserPlugin options to webpack to maintain function names in debug builds
 
-- CreateJS: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- CreateJS: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - CreateJS: added TerserPlugin options to webpack to maintain function names in debug builds
 
 ## [2.0.0] - 2024-05-09
@@ -71,7 +90,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CreateJS: Updated SpringRoll to 2.6.0
 - CreateJS: Updated feature list and state listeners to follow a standardized set
-
 
 ## [1.3.1] - 2023-03-28
 
@@ -121,10 +139,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phaser: Added Cordova file system support, using a fork of 3.55.2
 - Phaser: Merged in dependency changes
 
-- Pixi:  Merged in dependency changes
+- Pixi: Merged in dependency changes
 
-- CreateJS:  Merged in dependency changes
-
+- CreateJS: Merged in dependency changes
 
 ## [1.1.1] - 2022-11-14
 
@@ -135,4 +152,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Phaser: Updated version to 3.55.2
-
