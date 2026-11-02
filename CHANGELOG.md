@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Added
+
+- Dependabot config (`.github/dependabot.yml`) for monthly npm dependency updates, with minor/patch dev dependency bumps grouped into a single PR
+
 ### Changed
 
 - Dependency updates, [ticket](https://pbskids.atlassian.net/browse/SR-248):
