@@ -11,7 +11,7 @@
   "author": "Andrew Smith",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.20.2",
+    "@babel/core": "^8.0.10",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.0",
     "clean-webpack-plugin": "^4.0.0",
