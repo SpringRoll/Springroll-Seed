@@ -29,6 +29,6 @@
     "webpack-dev-server": "^5.2.4"
   },
   "dependencies": {
-    "springroll": "^2.9.0"
+    "springroll": "^2.10.0"
   }
 }
