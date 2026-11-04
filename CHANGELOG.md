@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0]
+
+### Changed
+
+- Pixi: Narrowed the Captions Overlay to wrap its text instead of spanning the full screen width
+
 ## [2.3.0] - 2026-02-18
 
 ### Changed
@@ -47,13 +53,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - added TerserPlugin options to webpack to maintain function names in debug builds
 
-- Pixi: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Pixi: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - Pixi: added TerserPlugin options to webpack to maintain function names in debug builds
 
-- Phaser: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- Phaser: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - Phaser: added TerserPlugin options to webpack to maintain function names in debug builds
 
-- CreateJS: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds 
+- CreateJS: added TerserPlugin options to webpack to drop `console.log` and `console.info` in production builds
 - CreateJS: added TerserPlugin options to webpack to maintain function names in debug builds
 
 ## [2.0.0] - 2024-05-09
@@ -72,7 +78,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CreateJS: Updated SpringRoll to 2.6.0
 - CreateJS: Updated feature list and state listeners to follow a standardized set
-
 
 ## [1.3.1] - 2023-03-28
 
@@ -122,10 +127,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Phaser: Added Cordova file system support, using a fork of 3.55.2
 - Phaser: Merged in dependency changes
 
-- Pixi:  Merged in dependency changes
+- Pixi: Merged in dependency changes
 
-- CreateJS:  Merged in dependency changes
-
+- CreateJS: Merged in dependency changes
 
 ## [1.1.1] - 2022-11-14
 
@@ -136,4 +140,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Phaser: Updated version to 3.55.2
-
