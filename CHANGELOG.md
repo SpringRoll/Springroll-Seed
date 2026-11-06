@@ -7,9 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [2.4.0]
 
+### Added
+
+- Dependabot config (`.github/dependabot.yml`) for monthly npm dependency updates, with minor/patch dev dependency bumps grouped into a single PR
+
 ### Changed
 
 - Phaser: Narrowed the Captions Overlay to wrap its text instead of spanning the full screen width
+- Updated SpringRoll to 2.10.0
+- Dependency updates, [ticket](https://pbskids.atlassian.net/browse/SR-248):
+  - Bump webpack-dev-server to 5.2.4
+  - Bump copy-webpack-plugin to 14.0.0
+  - Bump terser-webpack-plugin to 5.4.0
+  - Bump serialize-javascript to 7.0.5
+  - Bump qs to 6.16.2 and express to 4.22.3
+  - Bump lodash to 4.18.1
+  - Bump follow-redirects to 1.16.2
+  - Bump @babel/plugin-transform-modules-systemjs to 7.29.4
+  - Bump fast-uri, flatted, picomatch, and minimatch
+  - Bump postcss to 8.5.32
+  - Bump postcss-selector-parser to 7.1.7
+  - Bump proxy-addr to 2.0.8
+  - Apply `npm audit fix` (ws, websocket-driver, js-yaml, brace-expansion, body-parser, @babel/*, and others)
 
 ## [2.3.0] - 2026-02-18
 
